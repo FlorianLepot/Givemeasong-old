@@ -1,0 +1,20 @@
+{% block field_widget %}
+{% spaceless %}
+    {% set type = type|default('text') %}
+    <input class="form-control" type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+
+{% endspaceless %}
+{% endblock field_widget %}
+
+{% block form_row %}
+{% spaceless %}
+<div class="form-group">
+    <label class="col-sm-4 control-label">{{ form_label(form) }}</label>
+    <div class="col-sm-8">
+        {{ form_widget(form) }}
+    </div>
+    <span class="help-block"><strong class="text-error">{{ form_errors(form) }}</strong></span>
+</div>
+{% endspaceless %}
+{% endblock form_row %}
+

@@ -1,0 +1,79 @@
+gmas_music_homepage:
+    pattern:  /
+    defaults: { _controller: GmasMusicBundle:Music:index }
+
+gmas_music_categories_route:
+    pattern:  /categories/listen/{category_id}
+    defaults: { _controller: GmasMusicBundle:Categories:listen }
+
+gmas_music_songs_listen:
+    pattern:  /songs/listen/{song_id}/{song_nexted}
+    defaults: { _controller: GmasMusicBundle:Song:listen, song_nexted: null }
+
+gmas_music_admin_homepage:
+    pattern:  /admin
+    defaults: { _controller: GmasMusicBundle:Song:admin_index }
+
+gmas_music_admin_songs_list:
+    pattern:  /admin/songs/list
+    defaults: { _controller: GmasMusicBundle:Song:admin_list }
+
+gmas_music_admin_songs_deadlinks:
+    pattern:  /admin/songs/deadlinks
+    defaults: { _controller: GmasMusicBundle:Song:admin_deadlinks }
+
+gmas_music_admin_categories_list:
+    pattern:  /admin/categories/list
+    defaults: { _controller: GmasMusicBundle:Categories:admin_list }
+
+gmas_music_admin_songs_delete:
+    pattern:  /admin/songs/delete/{id}
+    defaults: { _controller: GmasMusicBundle:Song:admin_delete }
+
+gmas_music_admin_categories_delete:
+    pattern:  /admin/categories/delete/{id}
+    defaults: { _controller: GmasMusicBundle:Categories:admin_delete }
+
+gmas_music_songs_ajax_suggest:
+    pattern:  /songs/suggest
+    defaults: { _controller: GmasMusicBundle:Ajax:updateData }
+
+gmas_music_songs_ajax_deadlink:
+    pattern:  /songs/deadlink/{youtubeid}
+    defaults: { _controller: GmasMusicBundle:Ajax:deadlink }
+
+gmas_music_songs_ajax_setlistenedsong:
+    pattern:  /songs/setlistenedsong
+    defaults: { _controller: GmasMusicBundle:Ajax:setListenedSong }
+
+gmas_music_songs_ajax_setnextedsong:
+    pattern:  /songs/setnextedsong
+    defaults: { _controller: GmasMusicBundle:Ajax:setNextedSong }
+
+gmas_music_songs_ajax_getnextyoutubeid:
+    pattern:  /songs/getnextyoutubeid
+    defaults: { _controller: GmasMusicBundle:Ajax:getNextYoutubeId }
+
+gmas_music_songs_ajax_getpreviousyoutubeid:
+    pattern:  /songs/getpreviousyoutubeid
+    defaults: { _controller: GmasMusicBundle:Ajax:getPreviousYoutubeId }
+
+gmas_music_songs_ajax_like:
+    pattern:  /songs/like/{youtubeid}
+    defaults: { _controller: GmasMusicBundle:Ajax:like }
+
+gmas_music_songs_ajax_hate:
+    pattern:  /songs/hate/{youtubeid}
+    defaults: { _controller: GmasMusicBundle:Ajax:hate }
+
+gmas_music_songs_ajax_deadlinks_replace:
+    pattern:  /admin/songs/deadlinks/replace/{youtubeid}/{youtubeid_new}
+    defaults: { _controller: GmasMusicBundle:Ajax:admin_deadlinks_replace, youtubeid: null, youtubeid_new: null }
+
+gmas_music_songs_ajax_deadlinks_keep:
+    pattern:  /admin/songs/deadlinks/keep/{youtubeid}
+    defaults: { _controller: GmasMusicBundle:Ajax:admin_deadlinks_keep, youtubeid: null }
+
+gmas_music_admin_songs_ajax_add:
+    pattern:  /admin/songs/add
+    defaults: { _controller: GmasMusicBundle:Ajax:admin_addSong }

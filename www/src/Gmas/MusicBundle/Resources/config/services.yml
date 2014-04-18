@@ -1,0 +1,7 @@
+parameters:
+#    gmas_music.example.class: Gmas\MusicBundle\Example
+
+services:
+#    gmas_music.example:
+#        class: %gmas_music.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

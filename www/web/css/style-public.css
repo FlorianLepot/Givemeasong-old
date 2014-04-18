@@ -1,0 +1,127 @@
+
+#site {
+    padding-top: 20px;
+    padding-bottom: 40px;
+    color: #356b75;
+}
+/* #3D3D3D */
+h3.muted a {
+    text-decoration: none;
+    color: #3D3D3D;
+}
+
+.nav-pills a {
+    color: #575757;
+}
+
+.nav-pills a:hover {
+    color: #575757;
+    background-color: #DBDBDB;
+}
+
+h1 {
+    color: #356b75;
+}
+
+/* Custom container */
+.container-narrow {
+margin: 0 auto;
+max-width: 700px;
+}
+.container-narrow > hr {
+margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+margin: 60px 0;
+text-align: center;
+}
+.jumbotron h1 {
+font-size: 72px;
+line-height: 1;
+color:#356b75;
+}
+.jumbotron .btn {
+font-size: 21px;
+padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+margin: 60px 0;
+}
+.marketing p + h4 {
+margin-top: 28px;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-center p {
+    margin-top: 10px;
+}
+
+.text-center p.margintop {
+    margin-top: 30px;
+}
+
+hr {
+    height: 0px;
+    border:none;
+    border-bottom: 1px solid white;
+}
+
+#lang {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    float: left;
+}
+
+.page-header {
+    margin-top:70px;
+}
+
+ div#contact {
+    color:#ffffff;
+    margin-top:10px;
+    margin-left:auto;
+    margin-right:auto;
+    width:450px;
+}
+
+ div#contact a {
+    font-weight: bold;
+}
+
+ div#contact p {
+    float:left;
+}
+
+ div#contact p span {
+    font-weight: bold;
+    color: #29241c;
+}
+
+ div#contact p:last-child {
+    margin-left:100px;
+}
+
+div#buttons-bar {
+    margin-left:auto;
+    margin-right:auto;
+    width:auto;
+    text-align:center;
+}
+
+div#buttons-bar a {
+    margin-left:10px;
+    margin-right:10px;
+    color:red;
+}

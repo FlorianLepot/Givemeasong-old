@@ -1,0 +1,128 @@
+<div class="page-header">
+  <h1>Mon compte</h1>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <div class="row-fluid">
+      <div class="span3">{{ 'profile.show.username'|trans({}, 'FOSUserBundle') }}: {{ user.username }}</div>
+      <div class="span4">{{ 'profile.show.email'|trans({}, 'FOSUserBundle') }}: {{ user.email }}</div>
+    </div>
+    <div class="row">
+      <div class="span12">
+        <p><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a></p>
+      </div>
+  </div>
+</div>
+
+
+<div class="row" style="margin-top:100px;">
+  <div class="span12">
+    <h3>Musiques proposées</h3>
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">Toutes</a></li>
+      <li><a href="#accepted" data-toggle="tab">Validées</a></li>
+      <li><a href="#waiting" data-toggle="tab">En attente</a></li>
+      <li><a href="#rejected" data-toggle="tab">Refusées</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="home">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th>Nom</th>
+            <th>Playlist</th>
+            <th>Statut</th>
+          </thead>
+          <tbody>
+            {% for song in user.songs %}
+              <tr>
+                <td><a href="http://www.youtube.com/watch?v={{ song.youtubeid }}">{{ song.name }}</a></td>
+                <td>{{ song.category.name }}</td>
+                <td>
+                  {% if song.statut == 1 %}
+                   <span class="label label-success">Validée</span>
+                  {% elseif song.statut == 0 %}
+                   <span class="label label-warning">En attente</span>
+                  {% else %}
+                   <span class="label label-important">Refusée</span>
+                  {% endif %}
+                </td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade" id="accepted">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th>Nom</th>
+            <th>Playlist</th>
+            <th>Statut</th>
+          </thead>
+          <tbody>
+            {% for song in user.songs %}
+              {% if song.statut == 1 %}
+                <tr>
+                  <td><a href="http://www.youtube.com/watch?v={{ song.youtubeid }}">{{ song.name }}</a></td>
+                  <td>{{ song.category.name }}</td>
+                  <td>
+                   <span class="label label-success">Validée</span>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade" id="waiting">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th>Nom</th>
+            <th>Playlist</th>
+            <th>Statut</th>
+          </thead>
+          <tbody>
+            {% for song in user.songs %}
+              {% if song.statut == 0 %}
+                <tr>
+                  <td><a href="http://www.youtube.com/watch?v={{ song.youtubeid }}">{{ song.name }}</a></td>
+                  <td>{{ song.category.name }}</td>
+                  <td>
+                   <span class="label label-warning">En attente</span>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade" id="rejected">
+        <table class="table table-hover table-condensed">
+          <thead>
+            <th>Nom</th>
+            <th>Playlist</th>
+            <th>Statut</th>
+          </thead>
+          <tbody>
+            {% for song in user.songs %}
+              {% if song.statut == -1 %}
+                <tr>
+                  <td><a href="http://www.youtube.com/watch?v={{ song.youtubeid }}">{{ song.name }}</a></td>
+                  <td>{{ song.category.name }}</td>
+                  <td>
+                   <span class="label label-important">Refusée</span>
+                  </td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+  </div>
+</div>

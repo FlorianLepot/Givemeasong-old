@@ -1,0 +1,63 @@
+{% if is_granted("ROLE_ADMIN") %}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Administration</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+    </head>
+    <body>
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <div class="nav-collapse">
+                        <ul class="nav">
+                            <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="icon-cog icon"></i> <strong>Administration</strong></a></li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown" id="menu1">
+                                <a href="{{ path('gmas_music_admin_songs_list') }}">Musiques</a>
+                            </li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown" id="menu2">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">Utilisateurs <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="">Membres</a></li>
+                                    <li><a href="">Administrateurs</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
+                            <li class="divider-vertical"></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span style="color:#0088cc">{{ app.user.username }}</span> <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="{{ path('fos_user_security_logout')}}">Déconnexion</a></li>
+                                </ul>
+                            </li>
+                            <li class="divider-vertical"></li>
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="padding-top:50px;">
+            {% block body %}
+            {% endblock %}
+        </div>
+
+    </body>
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
+</html>
+{% endif %}

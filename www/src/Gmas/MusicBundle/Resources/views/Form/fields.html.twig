@@ -1,0 +1,11 @@
+{% block form_row %}
+{% spaceless %}
+<div class="control-group">
+  <label class="control-label" for="inputEmail">{{ form_label(form) }}</label>
+  <div class="controls">
+    {{ form_widget(form) }}
+    <span class="help-inline"><strong class="text-error">{{ form_errors(form) }}</strong></span>
+  </div>
+</div>
+{% endspaceless %}
+{% endblock form_row %}

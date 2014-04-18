@@ -1,0 +1,328 @@
+{% extends "GmasMusicBundle::layout_admin_new.html.twig" %}
+
+{% block nav_user %}
+class="active open"
+{% endblock %}
+
+{% block nav_user_users %}
+class="active"
+{% endblock %}
+
+{% block body %}
+<div class="breadcrumbs" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li>
+      <i class="icon-home home-icon"></i>
+      <a href="{{ path('gmas_music_admin_homepage') }}">Accueil</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li>
+      <a href="{{ path('gmas_user_admin_users_list') }}">Utilisateurs</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li class="active">Edition d'un profil</li>
+  </ul><!--.breadcrumb-->
+
+  <div class="nav-search" id="nav-search">
+    <form class="form-search">
+      <span class="input-icon">
+        <input type="text" placeholder="Rechercher" class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+        <i class="icon-search nav-search-icon"></i>
+      </span>
+    </form>
+  </div><!--#nav-search-->
+</div>
+
+<div class="page-content">
+  <div class="page-header position-relative">
+    <h1>
+      Utilisateurs
+      <small>
+        <i class="icon-double-angle-right"></i>
+        Edition du profil de {{ user.username }}
+      </small>
+    </h1>
+  </div><!--/.page-header-->
+
+{% for key, flash in app.session.getFlashBag() %}
+    <div class="alert alert-{{ key }}">
+      {% for flashh in flash %}
+        {{ flashh }}
+      {% endfor %}
+    </div>
+{% endfor %}
+
+<div id="user-profile-1" class="user-profile row-fluid">
+    <div class="span3 center">
+      <div>
+        <span class="profile-picture">
+          <img id="avatar" class="editable" alt="Alex's Avatar" src="{{ asset('avatars/profile-pic.jpg') }}" />
+        </span>
+
+        <div class="space-4"></div>
+
+        <div class="width-80 label label-info label-large arrowed-in arrowed-in-right">
+          <div class="inline position-relative">
+            <a href="#" class="user-title-label dropdown-toggle" data-toggle="dropdown">
+              <!--<i class="icon-circle light-green middle"></i> &nbsp;-->
+              <span class="white middle bigger-120">{{ user.username }}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-6"></div>
+
+      <div class="profile-contact-info">
+        <div class="profile-contact-links align-left">
+          <a class="btn btn-link" href="#">
+            <i class="icon-envelope bigger-120 pink"></i>
+            Envoyer un email
+          </a>
+
+          <a class="btn btn-link" href="#">
+            <i class="icon-globe bigger-125 blue"></i>
+            www.alexdoe.com
+          </a>
+        </div>
+
+        <div class="space-6"></div>
+
+        <div class="profile-social-links center">
+          <a href="#" class="tooltip-info" title="" data-original-title="Visit my Facebook">
+            <i class="middle icon-facebook-sign icon-2x blue"></i>
+          </a>
+
+          <a href="#" class="tooltip-info" title="" data-original-title="Visit my Twitter">
+            <i class="middle icon-twitter-sign icon-2x light-blue"></i>
+          </a>
+
+          <a href="#" class="tooltip-error" title="" data-original-title="Visit my Pinterest">
+            <i class="middle icon-pinterest-sign icon-2x red"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hr hr12 dotted"></div>
+
+      <div class="clearfix">
+        <div class="grid2">
+          <span class="bigger-175 blue">25</span>
+
+          <br />
+          Followers
+        </div>
+
+        <div class="grid2">
+          <span class="bigger-175 blue">12</span>
+
+          <br />
+          Following
+        </div>
+      </div>
+
+      <div class="hr hr16 dotted"></div>
+    </div>
+
+    <div class="span9">
+      <div class="center">
+        <span class="btn btn-app btn-small btn-light no-hover">
+          <span class="bigger-150 blue"> 1,411 </span>
+
+          <br />
+          <span class="smaller-90"> Views </span>
+        </span>
+
+        <span class="btn btn-app btn-small btn-yellow no-hover">
+          <span class="bigger-175"> 32 </span>
+
+          <br />
+          <span class="smaller-90"> Followers </span>
+        </span>
+
+        <span class="btn btn-app btn-small btn-pink no-hover">
+          <span class="bigger-175"> 4 </span>
+
+          <br />
+          <span class="smaller-90"> Projects </span>
+        </span>
+
+        <span class="btn btn-app btn-small btn-grey no-hover">
+          <span class="bigger-175"> 23 </span>
+
+          <br />
+          <span class="smaller-90"> Reviews </span>
+        </span>
+
+        <span class="btn btn-app btn-small btn-success no-hover">
+          <span class="bigger-175"> 7 </span>
+
+          <br />
+          <span class="smaller-90"> Albums </span>
+        </span>
+
+        <span class="btn btn-app btn-small btn-primary no-hover">
+          <span class="bigger-175"> 55 </span>
+
+          <br />
+          <span class="smaller-90"> Contacts </span>
+        </span>
+      </div>
+
+      <div class="space-12"></div>
+
+      <div class="profile-user-info profile-user-info-striped">
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Username </div>
+
+          <div class="profile-info-value">
+            <span class="editable" id="username">alexdoe</span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Location </div>
+
+          <div class="profile-info-value">
+            <i class="icon-map-marker light-orange bigger-110"></i>
+            <span class="editable" id="country">Netherlands</span>
+            <span class="editable" id="city">Amsterdam</span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Age </div>
+
+          <div class="profile-info-value">
+            <span class="editable" id="age">38</span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Joined </div>
+
+          <div class="profile-info-value">
+            <span class="editable" id="signup">20/06/2010</span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> Last Online </div>
+
+          <div class="profile-info-value">
+            <span class="editable" id="login">3 hours ago</span>
+          </div>
+        </div>
+
+        <div class="profile-info-row">
+          <div class="profile-info-name"> About Me </div>
+
+          <div class="profile-info-value">
+            <span class="editable" id="about">Editable as WYSIWYG</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-20"></div>
+
+      <div class="span6">
+        <div class="widget-box transparent">
+          <div class="widget-header widget-header-small header-color-blue2">
+            <h4 class="smaller">
+              <i class="icon-lightbulb bigger-120"></i>
+              My Skills
+            </h4>
+          </div>
+
+          <div class="widget-body">
+            <div class="widget-main padding-16">
+              <div class="row-fluid">
+                <div class="grid3 center">
+                  <div class="easy-pie-chart percentage" data-percent="45" data-color="#CA5952">
+                    <span class="percent">45</span>
+                    %
+                  </div>
+
+                  <div class="space-2"></div>
+                  Graphic Design
+                </div>
+
+                <div class="grid3 center">
+                  <div class="center easy-pie-chart percentage" data-percent="90" data-color="#59A84B">
+                    <span class="percent">90</span>
+                    %
+                  </div>
+
+                  <div class="space-2"></div>
+                  HTML5 & CSS3
+                </div>
+
+                <div class="grid3 center">
+                  <div class="center easy-pie-chart percentage" data-percent="80" data-color="#9585BF">
+                    <span class="percent">80</span>
+                    %
+                  </div>
+
+                  <div class="space-2"></div>
+                  Javascript/jQuery
+                </div>
+              </div>
+
+              <div class="hr hr-16"></div>
+
+              <div class="profile-skills">
+                <div class="progress">
+                  <div class="bar" style="width:80%">
+                    <span class="pull-left">HTML5 & CSS3</span>
+                    <span class="pull-right">80%</span>
+                  </div>
+                </div>
+
+                <div class="progress progress-success">
+                  <div class="bar" style="width:72%">
+                    <span class="pull-left">Javascript & jQuery</span>
+
+                    <span class="pull-right">72%</span>
+                  </div>
+                </div>
+
+                <div class="progress progress-purple">
+                  <div class="bar" style="width:70%">
+                    <span class="pull-left">PHP & MySQL</span>
+
+                    <span class="pull-right">70%</span>
+                  </div>
+                </div>
+
+                <div class="progress progress-warning">
+                  <div class="bar" style="width:50%">
+                    <span class="pull-left">Wordpress</span>
+
+                    <span class="pull-right">50%</span>
+                  </div>
+                </div>
+
+                <div class="progress progress-danger">
+                  <div class="bar" style="width:35%">
+                    <span class="pull-left">Photoshop</span>
+
+                    <span class="pull-right">35%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+{% endblock %}

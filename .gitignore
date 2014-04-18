@@ -1,0 +1,9 @@
+/_sftp-config.json
+/www/web/bundles/
+/www/app/bootstrap.php.cache
+/www/app/cache/*
+/www/app/logs/*
+/www/build/
+/www/vendor/
+/www/bin/
+/www/composer.phar

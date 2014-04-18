@@ -1,0 +1,107 @@
+{% extends "GmasMusicBundle::layout_admin_new.html.twig" %}
+
+{% block nav_user %}
+class="active open"
+{% endblock %}
+
+{% block nav_user_users %}
+class="active"
+{% endblock %}
+
+{% block body %}
+<div class="breadcrumbs" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li>
+      <i class="icon-home home-icon"></i>
+      <a href="{{ path('gmas_music_admin_homepage') }}">Accueil</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li>
+      <a href="{{ path('gmas_user_admin_users_list') }}">Utilisateurs</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li class="active">Liste des membres</li>
+  </ul><!--.breadcrumb-->
+
+  <div class="nav-search" id="nav-search">
+    <form class="form-search">
+      <span class="input-icon">
+        <input type="text" placeholder="Rechercher" class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+        <i class="icon-search nav-search-icon"></i>
+      </span>
+    </form>
+  </div><!--#nav-search-->
+</div>
+
+<div class="page-content">
+  <div class="page-header position-relative">
+    <h1>
+      Utilisateurs
+      <small>
+        <i class="icon-double-angle-right"></i>
+        Liste des membres
+      </small>
+    </h1>
+  </div><!--/.page-header-->
+
+{% for key, flash in app.session.getFlashBag() %}
+    <div class="alert alert-{{ key }}">
+      {% for flashh in flash %}
+        {{ flashh }}
+      {% endfor %}
+    </div>
+{% endfor %}
+
+<div class="pull-right" style="margin-right:30px; margin-bottom:10px;">
+  <a href="{{ path('gmas_user_admin_users_create') }}" class="btn btn-small btn-success">Créer un utilisateur</a>
+</div>
+<p>Il y a <strong>{{ users|length }}</strong> membres.</p>
+
+<div class="clearfix"></div>
+
+<table class="table table-striped table-hover table-condensed">
+  <thead>
+    <th>#</th>
+    <th>Identifiant</th>
+    <th>Email</th>
+    <th>Date d'inscription</th>
+    <th>Statut</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    {% for user in users %}
+      <tr>
+        <td>{{ user.id }}</td>
+        <td><a href="{{ path('gmas_user_admin_users_view', { 'userid': user.id }) }}">{{ user.username }}</a></td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.registration|date('d/m/Y') }}</td>
+        <td>
+          {% if user.roles[0] == "ROLE_ADMIN" %}
+            <span class="label label-inverse">Administrateur</span>
+          {% elseif user.enabled == 1 %}
+            <span class="label label-success">Validé</span>{% elseif user.enabled == 0 %}<span class="label label-warning">En attente</span>
+          {% else %}
+            <span class="label label-error">Non validé</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if user.enabled == 0 %}
+            <a class="btn btn-mini btn-success" href="{{ path('gmas_user_admin_users_validate', { 'userid': user.id }) }}"><i class="icon-white icon-ok"></i></a>
+          {% elseif user.enabled == 1 and user.roles[0] != "ROLE_ADMIN" %}
+            <a class="btn btn-mini btn-warning" href="{{ path('gmas_user_admin_users_validate', { 'userid': user.id }) }}"><i class="icon-white icon-ban-circle"></i></a>
+          {% endif %}
+          <a class="btn btn-mini btn-info" href=""><i class="icon-white icon-edit"></i></a>
+          <a class="btn btn-mini btn-danger"  onclick="return confirm('Voulez vous vraiment supprimer cet utilisateur ?'); " href="{{ path('gmas_user_admin_users_delete', { 'userid': user.id }) }}"><i class="icon-white icon-trash"></i></a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endblock %}

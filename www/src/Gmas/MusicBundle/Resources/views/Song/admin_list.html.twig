@@ -1,0 +1,140 @@
+{% extends "GmasMusicBundle::layout_admin_new.html.twig" %}
+
+{% block nav_music %}
+class="active open"
+{% endblock %}
+
+{% block nav_music_musics %}
+class="active"
+{% endblock %}
+
+{% block body %}
+{% form_theme form 'GmasUserBundle:Form:fields.html.twig' %}
+{% form_theme form2 'GmasUserBundle:Form:fields.html.twig' %}
+
+<div class="breadcrumbs" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li>
+      <i class="icon-home home-icon"></i>
+      <a href="{{ path('gmas_music_admin_homepage') }}">Accueil</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li>
+      <a href="{{ path('gmas_music_admin_songs_list') }}">Musiques</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li class="active">Liste des musiques</li>
+  </ul><!--.breadcrumb-->
+
+  <div class="nav-search" id="nav-search">
+    <form class="form-search">
+      <span class="input-icon">
+        <input type="text" placeholder="Rechercher" class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+        <i class="icon-search nav-search-icon"></i>
+      </span>
+    </form>
+  </div><!--#nav-search-->
+</div>
+
+<div class="page-content">
+  <div class="page-header position-relative">
+    <h1>
+      Musiques
+      <small>
+        <i class="icon-double-angle-right"></i>
+        Liste des musiques disponibles
+      </small>
+    </h1>
+  </div><!--/.page-header-->
+
+{% for key, flash in app.session.getFlashBag() %}
+    <div class="alert alert-{{ key }}">
+      {% for flashh in flash %}
+        {{ flashh }}
+      {% endfor %}
+    </div>
+{% endfor %}
+
+<form class="form-horizontal" method="post" action="{{ path('gmas_music_admin_songs_list') }}">
+  {{ form_widget(form) }}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-success btn-small">Ajouter la musique</button>
+    </div>
+  </div>
+</form>
+
+
+<p>Il y a <strong>{{ songs|length }}</strong> musiques en tout.</p>
+
+<table id="table-all" class="table table-striped table-hover table-condensed">
+  <thead>
+    <th>#</th>
+    <th>Nom</th>
+    <th>Playlist</th>
+    <th>Stats</th>
+    <th>Action</th>
+  </thead>
+  <tbody>
+    {% for song in songs %}
+      <tr {% if song.deadlink %} class="error"{% endif %}>
+        <td>{{ song.id }}</td>
+        <td><a href="http://www.youtube.com/watch?v={{ song.youtubeid }}">{{ song.name }}</a></td>
+        <td>{{ song.category.name }}</td>
+        <td>
+          <span class="badge badge-info tooltipperso tooltip-info" data-rel="tooltip" title="Nombre de vues">{{ song.stats.views }}</span>
+          <span class="badge badge-success tooltipperso tooltip-success" data-rel="tooltip" title="Nombre de favoris">{{ song.stats.favorites }}</span>
+          <span class="badge badge-warning tooltipperso tooltip-warning" data-rel="tooltip" title="Nombre de next">{{ song.stats.nexts }}</span>
+          <span class="badge badge-important tooltipperso tooltip-error" data-rel="tooltip" title="Nombre de hates">{{ song.stats.hates }}</span>
+        </td>
+        <td>
+          {% if song.statut == 0 %}
+            <a class="btn btn-mini btn-success" href=""><i class="icon-white icon-ok"></i></a>
+          {% endif %}
+          <a class="btn btn-mini btn-info" href="#"><i class="icon-white icon-edit"></i></a>
+          <a class="btn btn-mini btn-danger"  onclick="return confirm('Voulez vous vraiment supprimer cette musique'); " href="{{ path('gmas_music_admin_songs_delete', { 'id': song.id }) }}"><i class="icon-white icon-trash"></i></a>
+        </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<hr>
+
+<form class="form-horizontal" method="post" action="{{ path('gmas_music_admin_songs_list') }}">
+  {{ form_widget(form2) }}
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn btn-success btn-small">Ajouter la musique</button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}
+
+{% block jScript %}
+<script src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('js/jquery.dataTables.bootstrap.js') }}"></script>
+
+<script type="text/javascript">
+  jQuery(function($) {
+    var oTable1 = $('#table-all').dataTable( {
+      "aoColumnDefs": [
+          { "bSearchable": false, "aTargets": [ 3, 4 ] },
+      ],
+      "aLengthMenu": [[15, 50, 100, -1], [15, 50, 100, "All"]],
+      "iDisplayLength": 15
+       } );
+  })
+</script>
+
+<script type="text/javascript">
+  $('[data-rel=tooltip]').tooltip();
+</script>
+{% endblock %}

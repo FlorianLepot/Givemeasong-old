@@ -1,0 +1,41 @@
+--- 
+doctrine: 
+  orm: 
+    auto_mapping: true
+    metadata_cache_driver: apc
+    query_cache_driver: apc
+framework: 
+  router: 
+    strict_requirements: ~
+imports: 
+  - 
+    resource: config.yml
+monolog: 
+  handlers: 
+    grouped: 
+      members: 
+        - streamed
+        - swift
+      type: group
+    login: 
+      channels: security
+      level: info
+      path: "%kernel.logs_dir%/auth.log"
+      type: stream
+    main: 
+      action_level: error
+      handler: grouped
+      type: fingers_crossed
+    streamed: 
+      level: debug
+      path: "%kernel.logs_dir%/%kernel.environment%.log"
+      type: stream
+    swift: 
+      from_email: alert@givemeasong.net
+      level: debug
+      subject: OOps
+      to_email: florian.lepot@gmail.com
+      type: swift_mailer
+parameters: 
+  router.options.matcher.cache_class: ~
+  router.options.matcher_class: Symfony\Component\Routing\Matcher\ApacheUrlMatcher

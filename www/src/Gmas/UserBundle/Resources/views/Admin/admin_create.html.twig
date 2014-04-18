@@ -1,0 +1,92 @@
+{% extends "GmasMusicBundle::layout_admin_new.html.twig" %}
+
+{% block nav_user %}
+class="active open"
+{% endblock %}
+
+{% block nav_user_users %}
+class="active"
+{% endblock %}
+
+{% block body %}
+{% form_theme form 'GmasUserBundle:Form:fields.html.twig' %}
+
+<div class="breadcrumbs" id="breadcrumbs">
+  <ul class="breadcrumb">
+    <li>
+      <i class="icon-home home-icon"></i>
+      <a href="{{ path('gmas_music_admin_homepage') }}">Accueil</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li>
+      <a href="{{ path('gmas_user_admin_users_list') }}">Utilisateurs</a>
+
+      <span class="divider">
+        <i class="icon-angle-right arrow-icon"></i>
+      </span>
+    </li>
+    <li class="active">Création d'un utilisateur</li>
+  </ul><!--.breadcrumb-->
+
+  <div class="nav-search" id="nav-search">
+    <form class="form-search">
+      <span class="input-icon">
+        <input type="text" placeholder="Rechercher" class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+        <i class="icon-search nav-search-icon"></i>
+      </span>
+    </form>
+  </div><!--#nav-search-->
+</div>
+
+<div class="page-content">
+  <div class="page-header position-relative">
+    <h1>
+      Utilisateurs
+      <small>
+        <i class="icon-double-angle-right"></i>
+        Création d'un utilisateur
+      </small>
+    </h1>
+  </div><!--/.page-header-->
+
+  {% for key, flash in app.session.getFlashBag() %}
+    <div class="alert alert-{{ key }}">
+      {% for flashh in flash %}
+        {{ flashh }}
+      {% endfor %}
+    </div>
+  {% endfor %}
+
+  <div class="row">
+    <div class="span12">
+      <form action="{{ path('gmas_user_admin_users_create') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-horizontal">
+        {{ form_widget(form) }}
+
+        <div class="control-group">
+          <label class="control-label">Droits utilisateurs</label>
+
+          <div class="controls">
+            <label>
+              <input name="fos_user_registration_form[roles][user]" type="checkbox" class="ace" checked />
+              <span class="lbl"> Membre</span>
+            </label>
+
+            <label>
+              <input name="fos_user_registration_form[roles][admin]" type="checkbox" class="ace" />
+              <span class="lbl"> Administrateur</span>
+            </label>
+          </div>
+        </div>
+        <div class="control-group">
+          <div class="controls">
+            <input class="btn" type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,281 @@
+body {
+    background-color: #eee5dc;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#site {
+    background-color: #eee5dc;
+}
+#header {
+    background: url('../img/bg.jpg') top right no-repeat;
+    height: 400px;
+}
+
+#header #ombre {
+    background: url('../img/ombre.png') repeat-x;
+    height: 97px;
+}
+
+#header #ombre #logo {
+    background: url('../img/logo.png') no-repeat;
+    height: 67px;
+    width: 192px;
+    margin-top: 13px;
+}
+
+#header #ombre #login {
+    margin-top: 28px;
+    color: #FFF;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+}
+
+.nav-pills > li > a {
+    color: #309171;
+    font-weight: normal;
+}
+
+.nav-pills > li {
+  float: left;
+}
+
+.nav-pills > li > a {
+  border-radius: 4px;
+}
+
+.nav-pills > li + li {
+  margin-left: 2px;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+  color: #309171;
+  background-color: #309171;
+}
+
+.nav-pills > .active > a > .badge {
+  color: #428bca;
+  background-color: #fff;
+}
+.nav-pills > li > a > .badge {
+  margin-left: 3px;
+}
+#trailer {
+    margin-top: -43px;
+}
+
+#trailer .small {
+    height: 10px;
+    max-height: 10px;
+    background-color: #309171;
+    margin-top: 34px;
+}
+
+#trailer .big {
+    font-family: "Open Sans", Verdana;
+    font-size: 38px;
+    color: white;
+    background-color: #309171;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+/* Custom */
+
+.playlist {
+    margin-top: 40px;
+}
+
+.playlist .content {
+    position:relative;
+    margin-top:10px;
+    overflow: hidden;
+    border-bottom: 4px solid #309171;
+    width: 310px;
+}
+
+
+.playlist .description {
+    width:310px;
+    position:absolute;
+    top:35px;
+    left:0;
+    background-color:#fff;
+    opacity:0.6;
+    padding:0 10px 10px;
+    height:141px;
+}
+
+.playlist .description:hover {
+    width:310px;
+    background-color:#fff;
+    float:left;
+    opacity: 0.7;
+}
+
+.playlist .description h2 {
+    font-size:22px;
+    font-weight: bold;
+    margin:0;
+    padding-left:10px;
+    padding-bottom:5px;
+    padding-top:5px;
+}
+
+.playlist .description p {
+    color: #707070;
+    font: 12px Arial,Helvetica,sans-serif;
+    text-align: justify;
+    width:290px;
+}
+
+.playlist .description a {
+    color: #E94F0E;
+    font: 16px Arial,Helvetica,sans-serif;
+    text-decoration:underline;
+    padding-top:15px;
+    text-align:center;
+}
+
+#footer {
+    margin-top: 70px;
+    background: url('../img/footer.jpg') no-repeat top right;
+}
+
+#footer .content {
+    background-color:#000;
+    opacity:0.6;
+    float: left;
+}
+
+#footer #foot {
+    height: 40px;
+    background-color: #309171;
+    text-align: center;
+    color: #FFF;
+    padding-top: 9px;
+}
+
+#footer #infos {
+    text-align: center;
+    padding-top: 127px;
+}
+
+#footer #infos h2 {
+    color: #309171;
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-top: 25px;
+}
+
+#footer #infos p {
+    color: #FFF;
+    font-size: 14px;
+    margin-top: 25px;
+}
+
+#footer #links {
+    margin-top: 100px;
+    background: url('../img/ombre_footer.png') repeat-x;
+    height: 243px;
+}
+#footer #top {
+    height: 32px;
+    width: 32px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#footer #links h2 {
+    font-family: "Open Sans", Verdana;
+    font-size: 18px;
+    font-weight: bold;
+    color: #6d6c6c;
+}
+
+#footer #links {
+    text-align: left;
+}
+
+#footer #links a {
+    color: white;
+    margin-left: 15px;
+}
+
+#footer #foot a {
+    color: white;
+    text-decoration: underline;
+}
+
+#listen {
+    text-align: center;
+}
+
+.actions {
+    padding-top: 240px;
+}
+
+#listen h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-family: "Open Sans";
+}
+
+#likes {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#likes a {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+
+.btn-black {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
+}
+.btn-black:hover,
+.btn-black:focus,
+.btn-black:active,
+.btn-black.active {
+  color: #ffffff;
+  background-color: #000000;
+  border-color: #000000;
+}
+.btn-black:active,
+.btn-black.active {
+  background-image: none;
+}
+.btn-black.disabled,
+.btn-black[disabled],
+.btn-black.disabled:hover,
+.btn-black[disabled]:hover,
+.btn-black.disabled:focus,
+.btn-black[disabled]:focus,
+.btn-black.disabled:active,
+.btn-black[disabled]:active,
+.btn-black.disabled.active,
+.btn-black[disabled].active {
+  background-color: #000000;
+  border-color: #000000;
+}
+.btn-black .badge {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+#suggest {
+    text-align: center;
+    padding-top: 30px;
+}

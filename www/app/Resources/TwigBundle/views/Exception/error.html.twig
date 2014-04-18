@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>Give me a Song !</title>
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/style-public.css') }}">
+
+        <style type="text/css">
+        body {
+            background: #e1eff2 url("{{ asset('img/bg.png') }}") 0 -550px no-repeat;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="site">
+            <div id="lang">
+                <a href="#"><img src="{{ asset('img/france.png') }}" alt="Français" title="Français" /></a>
+                <a href="#"><img src="{{ asset('img/usa.png') }}" alt="USA" title="USA" /></a>
+            </div>
+
+            <div class="container-narrow">
+                <div class="masthead">
+                    <ul class="nav nav-pills pull-right">
+                        <li class="active"><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
+                    </ul>
+                    <h3 class="muted"><a href="{{ path('gmas_music_homepage') }}">Give me a song !</a></h3>
+                </div>
+
+                <div style="height: 40px">
+                </div>
+
+                <div class="page-header">
+                  <h1>Erreur : {{ status_code }} {{ status_text }}</h1>
+                </div>
+
+                <p>Cette page n'est pas disponible. Si elle devrait l'être, veuillez nous contacter !</p>
+
+                <hr>
+
+                <div class="footer">
+                    <!--<div class="pull-left">
+                        <p><!--<a href="">légal</a> - <a href="">Contact</a></p>
+                    </div>
+
+                    <div class="pull-right text-right">
+                        Site développé par Florian Lepot
+                    </div>
+
+                    <div class="clearfix"></div>-->
+
+                    <div class="text-center">
+                        <p>&copy; Copyright Give me a song 2013 - Tous droits réservés</p>
+                    </div>
+                </div>
+            </div> <!-- /container -->
+        </div>
+
+        <!-- Le javascript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-41199690-1', 'givemeasong.net');
+            ga('send', 'pageview');
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+_welcome:
+    pattern:  /
+    defaults: { _controller: GmasMusicBundle:Song:index }
+
+gmas_user:
+    resource: "@GmasUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+gmas_music:
+    resource: "@GmasMusicBundle/Resources/config/routing.yml"
+    prefix:   /
+
