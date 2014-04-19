@@ -11,7 +11,7 @@ class SongSmallType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('youtubeid', null, array('label' => 'Lien'))
+            ->add('youtubeid', null, array('label' => 'Lien', 'attr' => array('placeholder' => 'Lien youtube')))
             ->add('category','entity', array('label' => 'Catégorie', 'class'=>'Gmas\MusicBundle\Entity\Categories', 'property'=>'name', ));
         ;
     }

@@ -108,7 +108,7 @@ body {
     top:35px;
     left:0;
     background-color:#fff;
-    opacity:0.6;
+    opacity:0.7;
     padding:0 10px 10px;
     height:141px;
 }
@@ -117,7 +117,7 @@ body {
     width:310px;
     background-color:#fff;
     float:left;
-    opacity: 0.7;
+    opacity: 0.6;
 }
 
 .playlist .description h2 {
@@ -127,17 +127,18 @@ body {
     padding-left:10px;
     padding-bottom:5px;
     padding-top:5px;
+    color: #242424;
 }
 
 .playlist .description p {
-    color: #707070;
+    color: #309171;
     font: 12px Arial,Helvetica,sans-serif;
     text-align: justify;
     width:290px;
 }
 
 .playlist .description a {
-    color: #E94F0E;
+    color: #309171;
     font: 16px Arial,Helvetica,sans-serif;
     text-decoration:underline;
     padding-top:15px;
@@ -278,4 +279,28 @@ body {
 #suggest {
     text-align: center;
     padding-top: 30px;
+}
+
+.popover-title {
+  padding: 8px 14px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  background-color: #f7f7f7;
+  border-bottom: 1px solid #ebebeb;
+  border-radius: 5px 5px 0 0;
+  color: #309171;
+}
+
+.green {
+    color: #309171;
+}
+
+.green:hover {
+    color: #309171;
+}
+
+.green:active {
+    color: #309171;
 }

@@ -179,7 +179,7 @@
       <div class="playlist">
         <div class="content">
           <div class="popover-markup">
-            <a href="javascript:void(0);" class="trigger">
+            <a href="javascript:void(0);" class="trigger" data-container="body" data-toggle="popover">
               <img src="{{ asset('img/aleatoire.jpg') }}" alt="" width="310" height="70" />
               <div class="description">
                 <h2>Aléatoire</h2>
@@ -239,15 +239,17 @@
 {% endblock %}
 
 {% block script %}
-$('.popover-markup>.trigger').popover({
+$('[data-toggle="popover"]').popover({
     html: true,
     title: function () {
-        return $(this).parent().find('.head').html();
+      return $(this).parent().find('.head').html();
     },
     content: function () {
-        return $(this).parent().find('.content').html();
+      return $(this).parent().find('.content').html();
     }
-});
+  }
+);
+
 
 function checkAllBox() {
   $(':checkbox').prop('checked', true);

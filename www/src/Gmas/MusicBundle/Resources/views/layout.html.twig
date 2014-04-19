@@ -5,7 +5,6 @@
         <title>Give me a Song!</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-        <script type="text/javascript" src="{{ asset('js/jquery-2.0.3.min.js') }}"></script>
     </head>
 
     <body>
@@ -30,12 +29,12 @@
                                         {% if is_granted("ROLE_ADMIN") %}
                                         <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="glyphicon glyphicon-cog"></i>  Administration</a></li>
                                         <li>
-                                            <a href="javascript:void(0);" id="addSong"><i class="glyphicon glyphicon-plus"></i></a>
+                                                <a href="javascript:void(0);" id="addSong" class="green"><i class="glyphicon glyphicon-plus"></i></a>
                                             <div class="popover-markup">
                                                 <div class="head hide"><strong>Ajouter une musique</strong></div>
                                                 <div class="content hide" id="addSongcontent">
                                                     <div id="message_song"></div>
-                                                    {{ render(controller('GmasMusicBundle:Song:getCreateForm')) }}
+                                                    <div style="width: 180px; margin-left: 10px; margin-right: 10px;">{{ render(controller('GmasMusicBundle:Song:getCreateForm')) }}</div>
                                                 </div>
                                             </div>
                                         </li>
