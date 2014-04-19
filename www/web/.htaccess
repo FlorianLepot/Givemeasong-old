@@ -46,3 +46,208 @@ DirectoryIndex app.php
         # RedirectTemp cannot be used instead
     </IfModule>
 </IfModule>
+
+# skip "real" requests
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule .* - [QSA,L]
+
+# _welcome
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:_welcome,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\SongController\:\:indexAction]
+
+# fos_user_security_login
+RewriteCond %{REQUEST_URI} ^/login$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_security_login,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\SecurityController\:\:loginAction]
+
+# fos_user_security_check
+RewriteCond %{REQUEST_URI} ^/login_check$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_security_check,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\SecurityController\:\:checkAction]
+
+# fos_user_security_logout
+RewriteCond %{REQUEST_URI} ^/logout$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_security_logout,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\SecurityController\:\:logoutAction]
+
+# fos_user_profile_show
+RewriteCond %{REQUEST_URI} ^/profile/$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=2,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/profile$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/profile/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_profile_show,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ProfileController\:\:showAction]
+
+# fos_user_profile_edit
+RewriteCond %{REQUEST_URI} ^/profile/edit$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_profile_edit,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ProfileController\:\:editAction]
+
+# fos_user_registration_register
+RewriteCond %{REQUEST_URI} ^/register$
+RewriteRule .* $0/ [QSA,L,R=301]
+RewriteCond %{REQUEST_URI} ^/register/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_registration_register,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:registerAction]
+
+# fos_user_registration_check_email
+RewriteCond %{REQUEST_URI} ^/register/check\-email$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/register/check\-email$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_registration_check_email,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:checkEmailAction]
+
+# fos_user_registration_confirm
+RewriteCond %{REQUEST_URI} ^/register/confirm/([^/]++)$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/register/confirm/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_registration_confirm,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:confirmAction]
+
+# fos_user_registration_confirmed
+RewriteCond %{REQUEST_URI} ^/register/confirmed$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/register/confirmed$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_registration_confirmed,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\RegistrationController\:\:confirmedAction]
+
+# fos_user_resetting_request
+RewriteCond %{REQUEST_URI} ^/resetting/request$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/resetting/request$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_resetting_request,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:requestAction]
+
+# fos_user_resetting_send_email
+RewriteCond %{REQUEST_URI} ^/resetting/send\-email$
+RewriteCond %{REQUEST_METHOD} !^(POST)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_POST:1]
+RewriteCond %{REQUEST_URI} ^/resetting/send\-email$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_resetting_send_email,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:sendEmailAction]
+
+# fos_user_resetting_check_email
+RewriteCond %{REQUEST_URI} ^/resetting/check\-email$
+RewriteCond %{REQUEST_METHOD} !^(GET|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/resetting/check\-email$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_resetting_check_email,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:checkEmailAction]
+
+# fos_user_resetting_reset
+RewriteCond %{REQUEST_URI} ^/resetting/reset/([^/]++)$
+RewriteCond %{REQUEST_METHOD} !^(GET|POST|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_POST:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/resetting/reset/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_resetting_reset,E=_ROUTING_param_token:%1,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ResettingController\:\:resetAction]
+
+# fos_user_change_password
+RewriteCond %{REQUEST_URI} ^/profile/change\-password$
+RewriteCond %{REQUEST_METHOD} !^(GET|POST|HEAD)$ [NC]
+RewriteRule .* - [S=1,E=_ROUTING_allow_GET:1,E=_ROUTING_allow_POST:1,E=_ROUTING_allow_HEAD:1]
+RewriteCond %{REQUEST_URI} ^/profile/change\-password$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:fos_user_change_password,E=_ROUTING_default__controller:FOS\\UserBundle\\Controller\\ChangePasswordController\:\:changePasswordAction]
+
+# gmas_user_admin_users_list
+RewriteCond %{REQUEST_URI} ^/admin/users/list$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_user_admin_users_list,E=_ROUTING_default__controller:Gmas\\UserBundle\\Controller\\UserController\:\:admin_listAction]
+
+# gmas_user_admin_users_list_admins
+RewriteCond %{REQUEST_URI} ^/admin/users/list/admins$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_user_admin_users_list_admins,E=_ROUTING_default__controller:Gmas\\UserBundle\\Controller\\UserController\:\:admin_list_adminAction]
+
+# gmas_user_admin_users_view
+RewriteCond %{REQUEST_URI} ^/admin/users/view/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_user_admin_users_view,E=_ROUTING_param_userid:%1,E=_ROUTING_default__controller:Gmas\\UserBundle\\Controller\\UserController\:\:admin_viewAction]
+
+# gmas_user_admin_users_delete
+RewriteCond %{REQUEST_URI} ^/admin/users/delete/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_user_admin_users_delete,E=_ROUTING_param_userid:%1,E=_ROUTING_default__controller:Gmas\\UserBundle\\Controller\\UserController\:\:admin_deleteAction]
+
+# gmas_user_admin_users_validate
+RewriteCond %{REQUEST_URI} ^/admin/users/validate/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_user_admin_users_validate,E=_ROUTING_param_userid:%1,E=_ROUTING_default__controller:Gmas\\UserBundle\\Controller\\UserController\:\:admin_validateAction]
+
+# gmas_user_admin_users_create
+RewriteCond %{REQUEST_URI} ^/admin/users/create$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_user_admin_users_create,E=_ROUTING_default__controller:Gmas\\UserBundle\\Controller\\UserController\:\:admin_createAction]
+
+# gmas_music_homepage
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_homepage,E=_ROUTING_default__controller:GmasMusicBundle\:Music\:index]
+
+# gmas_music_categories_route
+RewriteCond %{REQUEST_URI} ^/categories/listen/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_categories_route,E=_ROUTING_param_category_id:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\CategoriesController\:\:listenAction]
+
+# gmas_music_songs_listen
+RewriteCond %{REQUEST_URI} ^/songs/listen/([^/]++)(?:/([^/]++))?$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_listen,E=_ROUTING_param_song_id:%1,E=_ROUTING_param_song_nexted:%2,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\SongController\:\:listenAction,E=_ROUTING_default_song_nexted:]
+
+# gmas_music_admin_homepage
+RewriteCond %{REQUEST_URI} ^/admin$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_homepage,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\SongController\:\:admin_indexAction]
+
+# gmas_music_admin_songs_list
+RewriteCond %{REQUEST_URI} ^/admin/songs/list$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_songs_list,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\SongController\:\:admin_listAction]
+
+# gmas_music_admin_songs_deadlinks
+RewriteCond %{REQUEST_URI} ^/admin/songs/deadlinks$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_songs_deadlinks,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\SongController\:\:admin_deadlinksAction]
+
+# gmas_music_admin_categories_list
+RewriteCond %{REQUEST_URI} ^/admin/categories/list$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_categories_list,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\CategoriesController\:\:admin_listAction]
+
+# gmas_music_admin_songs_delete
+RewriteCond %{REQUEST_URI} ^/admin/songs/delete/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_songs_delete,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\SongController\:\:admin_deleteAction]
+
+# gmas_music_admin_categories_delete
+RewriteCond %{REQUEST_URI} ^/admin/categories/delete/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_categories_delete,E=_ROUTING_param_id:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\CategoriesController\:\:admin_deleteAction]
+
+# gmas_music_songs_ajax_suggest
+RewriteCond %{REQUEST_URI} ^/songs/suggest$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_suggest,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:updateDataAction]
+
+# gmas_music_songs_ajax_deadlink
+RewriteCond %{REQUEST_URI} ^/songs/deadlink/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_deadlink,E=_ROUTING_param_youtubeid:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:deadlinkAction]
+
+# gmas_music_songs_ajax_setlistenedsong
+RewriteCond %{REQUEST_URI} ^/songs/setlistenedsong$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_setlistenedsong,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:setListenedSongAction]
+
+# gmas_music_songs_ajax_setnextedsong
+RewriteCond %{REQUEST_URI} ^/songs/setnextedsong$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_setnextedsong,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:setNextedSongAction]
+
+# gmas_music_songs_ajax_getnextyoutubeid
+RewriteCond %{REQUEST_URI} ^/songs/getnextyoutubeid$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_getnextyoutubeid,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:getNextYoutubeIdAction]
+
+# gmas_music_songs_ajax_getpreviousyoutubeid
+RewriteCond %{REQUEST_URI} ^/songs/getpreviousyoutubeid$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_getpreviousyoutubeid,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:getPreviousYoutubeIdAction]
+
+# gmas_music_songs_ajax_like
+RewriteCond %{REQUEST_URI} ^/songs/like/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_like,E=_ROUTING_param_youtubeid:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:likeAction]
+
+# gmas_music_songs_ajax_hate
+RewriteCond %{REQUEST_URI} ^/songs/hate/([^/]++)$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_hate,E=_ROUTING_param_youtubeid:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:hateAction]
+
+# gmas_music_songs_ajax_deadlinks_replace
+RewriteCond %{REQUEST_URI} ^/admin/songs/deadlinks/replace(?:/([^/]++)(?:/([^/]++))?)?$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_deadlinks_replace,E=_ROUTING_param_youtubeid:%1,E=_ROUTING_param_youtubeid_new:%2,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:admin_deadlinks_replaceAction,E=_ROUTING_default_youtubeid:,E=_ROUTING_default_youtubeid_new:]
+
+# gmas_music_songs_ajax_deadlinks_keep
+RewriteCond %{REQUEST_URI} ^/admin/songs/deadlinks/keep(?:/([^/]++))?$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_songs_ajax_deadlinks_keep,E=_ROUTING_param_youtubeid:%1,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:admin_deadlinks_keepAction,E=_ROUTING_default_youtubeid:]
+
+# gmas_music_admin_songs_ajax_add
+RewriteCond %{REQUEST_URI} ^/admin/songs/add$
+RewriteRule .* app.php [QSA,L,E=_ROUTING_route:gmas_music_admin_songs_ajax_add,E=_ROUTING_default__controller:Gmas\\MusicBundle\\Controller\\AjaxController\:\:admin_addSongAction]
+
+# 405 Method Not Allowed
+RewriteCond %{ENV:_ROUTING__allow_GET} =1 [OR]
+RewriteCond %{ENV:_ROUTING__allow_POST} =1 [OR]
+RewriteCond %{ENV:_ROUTING__allow_HEAD} =1
+RewriteRule .* app.php [QSA,L]
