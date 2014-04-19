@@ -10,15 +10,20 @@
     <div class="col-md-3 small"></div>
   </div>
 
-  {% for key, flash in app.session.getFlashBag() %}
-      <div class="alert alert-{{ key }}">
-        {% for flashh in flash %}
-          {{ flashh }}
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12" id="messages">
+        {% for key, flash in app.session.getFlashBag() %}
+            <div class="alert alert-{{ key }}">
+              {% for flashh in flash %}
+                {{ flashh }}
+              {% endfor %}
+            </div>
         {% endfor %}
       </div>
-  {% endfor %}
+    </div>
 
-  <div class="container">
     <div class="col-md-offset-2 col-md-4">
       <div class="playlist">
         <div class="content">

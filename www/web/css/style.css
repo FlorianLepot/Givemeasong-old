@@ -90,7 +90,7 @@ body {
 /* Custom */
 
 .playlist {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .playlist .content {
@@ -303,4 +303,12 @@ body {
 
 .green:active {
     color: #309171;
+}
+
+#messages {
+    padding-top: 30px;
+}
+
+#popover-content {
+    font-size: 12px;
 }

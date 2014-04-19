@@ -29,12 +29,24 @@
 </div>
 
 <div class="container">
+  <div class="row">
+    <div class="col-md-12" id="messages">
+      {% for key, flash in app.session.getFlashBag() %}
+          <div class="alert alert-{{ key }}">
+            {% for flashh in flash %}
+              {{ flashh }}
+            {% endfor %}
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+
   <div class="row" id="listen">
     <div class="message" style="display:none;"></div>
     <div class="col-md-2 actions">
       <a onclick="changeToPreviousVideo();" href="#" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-chevron-left"></i> Précédent</a>
     </div>
-    <div class="col-md-8" style="margin-top: 70px;">
+    <div class="col-md-8" style="margin-top: 30px;">
       <div id="message"></div>
       <div id="player"></div>
     </div>
@@ -85,11 +97,11 @@ function aButtonPressed(){
     function(response){
       if(response.code == 100 && response.success){
         $('.modal-body #flash').remove();
-        $('.modal-body').prepend('<div id="flash" class="alert alert-block alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
+        $('.modal-body').prepend('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
       }
       else {
         $('.modal-body #flash').remove();
-        $('.modal-body').prepend('<div id="flash" class="alert alert-block alert-error"><button type="button" class="close" data-dismiss="alert">&times;</button><p>L\'adresse Youtube n\'est pas valide !</p></div>');
+        $('.modal-body').prepend('<div id="flash" class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><p>L\'adresse Youtube n\'est pas valide !</p></div>');
       }
     }, "json"
   );
@@ -106,11 +118,11 @@ function addToFavorites(){
   $.get('{{ path('gmas_music_songs_ajax_like', { youtubeid: song.youtubeid }) }}',
     function(response){
       if(response.code == 100 && response.success){
-        $('.message').html('<div id="flash" class="alert alert-block alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
+        $('.message').html('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
         $('.message').show();
       }
       else {
-        $('.message').html('<div id="flash" class="alert alert-block alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
+        $('.message').html('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
         $('.message').show();
       }
     }, "json"
@@ -123,11 +135,11 @@ function neverAgain(){
   $.get('{{ path('gmas_music_songs_ajax_hate', { youtubeid: song.youtubeid }) }}',
     function(response){
       if(response.code == 100 && response.success){
-        $('.message').html('<div id="flash" class="alert alert-block alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
+        $('.message').html('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
         $('.message').show();
       }
       else {
-        $('.message').html('<div id="flash" class="alert alert-block alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
+        $('.message').html('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
         $('.message').show();
       }
     }, "json"

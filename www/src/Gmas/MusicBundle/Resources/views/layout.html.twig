@@ -22,14 +22,16 @@
                                     <ul class="nav nav-pills pull-right">
                                         <li class="active"><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="glyphicon glyphicon-user"></i> Déconnexion</a></li>
                                         {#<li><a href="{{ path('fos_user_profile_show') }}"><i class="glyphicon glyphicon-user"></i>  Mon compte</a></li>#}
                                         {% else %}
-                                        <li><a href="{{ path('fos_user_security_login') }}"><i class="glyphicon glyphicon-user"></i> Connexion</a></li>
+                                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                                        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
                                         {% endif %}
                                         {% if is_granted("ROLE_ADMIN") %}
                                         <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="glyphicon glyphicon-cog"></i>  Administration</a></li>
                                         <li>
-                                                <a href="javascript:void(0);" id="addSong" class="green"><i class="glyphicon glyphicon-plus"></i></a>
+                                            <a href="javascript:void(0);" id="addSong" class="green"><i class="glyphicon glyphicon-plus"></i></a>
                                             <div class="popover-markup">
                                                 <div class="head hide"><strong>Ajouter une musique</strong></div>
                                                 <div class="content hide" id="addSongcontent">
@@ -63,18 +65,22 @@
               <div class="container">
                 <div class="col-md-offset-2 col-md-2">
                   <h2>Plan du site</h2>
-                  <p><a href="#">Accueil</a><br />
-                  <a href="#">Mon compte</a><br />
-                  <a href="#">Contact</a></p>
+                  <p><a href="{{ path('gmas_music_homepage') }}">Accueil</a><br />
+                  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                      <a href="{{ path('fos_user_registration_register') }}">Inscription</a><br />
+                      <a href="{{ path('fos_user_security_login') }}">Connexion</a><br />
+                  {% endif %}
+                  {# <a href="#">Mon compte</a><br /> #}
+                  <a href="mailto:contact@givemeasong.com">Contact</a></p>
                 </div>
                 <div class="col-md-offset-1 col-md-3">
                   <h2>Partenaire</h2>
-                  <p><a href="#">Give me a Show</a></p>
+                  <p><a href="http://www.givemeashow.net">Give me a Show</a></p>
                 </div>
                 <div class="col-md-3">
                   <h2>Retrouvez-nous sur</h2>
-                  <p><a href="#">Facebook</a><br />
-                  <a href="#">Twitter</a></p>
+                  <p><a href="https://www.facebook.com/givemeasong.official">Facebook</a><br />
+                  <a href="https://twitter.com/GMASOfficial">Twitter</a></p>
                 </div>
               </div>
             </div>

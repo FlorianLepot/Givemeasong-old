@@ -71,22 +71,22 @@ class AjaxController extends Controller
                         $text = '<strong>'.$song->getName().'</strong> a bien été proposé dans la playlist <strong>'.$category->getName().'</strong><br>La musique sera disponible lorsqu\'elle sera validée !';
                     }
                     else {
-                        $flash = 'error';
+                        $flash = 'danger';
                         $text = '<strong>'.$song->getName().'</strong> est déjà disponible dans cette playlist !';
                     }
                 }
                 else {
-                    $flash = 'error';
+                    $flash = 'danger';
                     $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
                 }
             }
             else {
-                $flash = 'error';
+                $flash = 'danger';
                 $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
             }
         }
         else {
-            $flash = 'error';
+            $flash = 'danger';
             $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
         }
 
@@ -216,7 +216,7 @@ class AjaxController extends Controller
             $response = array("code" => 100, "success" => true, "flash" => "success", "text" => "La musique a bien été ajoutée à vos favoris !");
         }
         else
-            $response = array("code" => 0, "success" => false, "flash" => "error", "text" => "Vous devez être connecté pour utiliser cette fonctionnalité !");
+            $response = array("code" => 0, "success" => false, "flash" => "danger", "text" => "Vous devez être connecté pour utiliser cette fonctionnalité !");
 
         return new Response(json_encode($response));
     }
@@ -242,7 +242,7 @@ class AjaxController extends Controller
             $response = array("code" => 100, "success" => true, "flash" => "success", "text" => "La musique a bien été ajoutée aux musiques que vous ne voulez plus entendre.<br />Vous pourrez modifier cette liste dans votre compte !");
         }
         else
-            $response = array("code" => 0, "success" => false, "flash" => "error", "text" => "Vous devez être connecté pour utiliser cette fonctionnalité !");
+            $response = array("code" => 0, "success" => false, "flash" => "danger", "text" => "Vous devez être connecté pour utiliser cette fonctionnalité !");
 
         return new Response(json_encode($response));
     }
@@ -289,22 +289,22 @@ class AjaxController extends Controller
                         $text = '<strong>'.$song->getName().'</strong> a bien été ajoutée dans la playlist <strong>'.$category->getName().'</strong>';
                     }
                     else {
-                        $flash = 'error';
+                        $flash = 'danger';
                         $text = '<strong>'.$song->getName().'</strong> est déjà disponible dans cette playlist !';
                     }
                 }
                 else {
-                    $flash = 'error';
+                    $flash = 'danger';
                     $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
                 }
             }
             else {
-                $flash = 'error';
+                $flash = 'danger';
                 $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
             }
         }
         else {
-            $flash = 'error';
+            $flash = 'danger';
             $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
         }
 
@@ -331,7 +331,7 @@ class AjaxController extends Controller
         if($nbSongs == $nbReplace)
             $response = array("success" => true, "flash" => "success", "text" => "La musique a bien été remplacée dans toutes les playlists !");
         else
-            $response = array("success" => false, "flash" => "error", "text" => "Un problème est survenu.");
+            $response = array("success" => false, "flash" => "danger", "text" => "Un problème est survenu.");
 
         return new Response(json_encode($response));
     }
@@ -353,7 +353,7 @@ class AjaxController extends Controller
         if($nbSongs == $nbReplace)
             $response = array("success" => true, "flash" => "success", "text" => "La musique a bien été revalidée dans toutes les playlists !");
         else
-            $response = array("success" => false, "flash" => "error", "text" => "Un problème est survenu.");
+            $response = array("success" => false, "flash" => "danger", "text" => "Un problème est survenu.");
 
         return new Response(json_encode($response));
     }
