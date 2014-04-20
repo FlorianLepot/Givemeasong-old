@@ -92,6 +92,7 @@ body {
 
 
 /* Custom */
+
 .playlist {
     margin-top: 20px;
 }
@@ -103,7 +104,6 @@ body {
     border-bottom: 4px solid #309171;
     width: 310px;
 }
-
 
 .playlist .description {
     width:310px;
