@@ -4,16 +4,16 @@
 {% form_theme form 'GmasUserBundle:Form:fields.html.twig' %}
 
 <div id="trailer">
-    <div class="col-md-3 small"></div>
-    <div class="col-md-6 big">
+    <div class="col-sm-3 small"></div>
+    <div class="col-sm-6 big">
       Inscription
     </div>
-    <div class="col-md-3 small"></div>
+    <div class="col-sm-3 small"></div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-8" style="margin-top: 30px;">
+    <div class="col-sm-8" style="margin-top: 30px;">
       <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register form-horizontal">
         {{ form_widget(form) }}
         <div class="form-group">

@@ -35,8 +35,12 @@ body {
 }
 
 .nav-pills > li > a {
-    color: #309171;
+    color: #FFFFFF;
     font-weight: normal;
+}
+
+.nav-pills > li > a:hover {
+    color: #309171;
 }
 
 .nav-pills > li {

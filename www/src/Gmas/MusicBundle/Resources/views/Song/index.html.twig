@@ -3,17 +3,17 @@
 {% block body %}
 
   <div id="trailer">
-    <div class="col-md-3 small"></div>
-    <div class="col-md-6 big">
+    <div class="col-sm-3 small"></div>
+    <div class="col-sm-6 big">
       Envie d'écouter un bon son ?
     </div>
-    <div class="col-md-3 small"></div>
+    <div class="col-sm-3 small"></div>
   </div>
 
   <div class="container">
 
     <div class="row">
-      <div class="col-md-12" id="messages">
+      <div class="col-sm-12" id="messages">
         {% for key, flash in app.session.getFlashBag() %}
             <div class="alert alert-{{ key }}">
               {% for flashh in flash %}
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="col-md-offset-2 col-md-4">
+    <div class="col-sm-offset-2 col-sm-4">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 1}) }}">
@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-4">
+    <div class="col-sm-offset-1 col-sm-4">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 2}) }}">
@@ -48,7 +48,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3" style="margin-left: 50px;">
+    <div class="col-sm-3" style="margin-left: 50px;">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 5}) }}">
@@ -60,7 +60,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-3">
+    <div class="col-sm-offset-1 col-sm-3">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 6}) }}">
@@ -72,7 +72,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-3">
+    <div class="col-sm-offset-1 col-sm-3">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 7}) }}">
@@ -84,7 +84,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3" style="margin-left: 50px;">
+    <div class="col-sm-3" style="margin-left: 50px;">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 8}) }}">
@@ -96,7 +96,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-3">
+    <div class="col-sm-offset-1 col-sm-3">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 9}) }}">
@@ -108,7 +108,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-3">
+    <div class="col-sm-offset-1 col-sm-3">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 10}) }}">
@@ -120,7 +120,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3" style="margin-left: 50px;">
+    <div class="col-sm-3" style="margin-left: 50px;">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 11}) }}">
@@ -132,7 +132,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-3">
+    <div class="col-sm-offset-1 col-sm-3">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 13}) }}">
@@ -144,7 +144,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-3">
+    <div class="col-sm-offset-1 col-sm-3">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 16}) }}">
@@ -156,7 +156,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-1 col-md-4">
+    <div class="col-sm-offset-1 col-sm-4">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 19}) }}">
@@ -168,7 +168,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-2 col-md-4">
+    <div class="col-sm-offset-2 col-sm-4">
       <div class="playlist">
         <div class="content">
           <a href="{{ path('gmas_music_categories_route', {'category_id': 20}) }}">
@@ -180,7 +180,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-offset-4 col-md-6">
+    <div class="col-sm-offset-4 col-sm-6">
       <div class="playlist">
         <div class="content">
           <div class="popover-markup">
@@ -222,19 +222,19 @@
 <div id="infos">
   <div class="container">
     <div class="row">
-      <div class="col-md-offset-1 col-md-3">
+      <div class="col-sm-offset-1 col-sm-3">
         <img src="{{ asset('img/pourtous.png') }}" alt="">
         <h2>Pour tous</h2>
         <p>Vous cherchez de bonnes musiques, fraiches et calmes pour profiter pleinement ? Nous aussi, écoutez les nôtres et partagez les vôtres !</p>
       </div>
 
-      <div class="col-md-offset-1 col-md-3">
+      <div class="col-sm-offset-1 col-sm-3">
         <img src="{{ asset('img/espacemembres.png') }}" alt="">
         <h2>Espace membre</h2>
         <p>L'inscription est gratuite ! Et une fois connecté, vous pourrez enregistrer certaines musiques dans vos favoris pour les retrouver plus tard.</p>
       </div>
 
-      <div class="col-md-offset-1 col-md-3">
+      <div class="col-sm-offset-1 col-sm-3">
         <img src="{{ asset('img/communaute.png') }}" alt="">
         <h2>Communauté</h2>
         <p>Vous pouvez aussi nous proposer des musiques que vous aimez pour les ajouter à notre playlist. Nous voulons aussi découvrir de nouvelles choses !</p>

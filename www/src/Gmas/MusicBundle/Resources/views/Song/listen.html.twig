@@ -21,16 +21,16 @@
 </div>
 
 <div id="trailer">
-    <div class="col-md-3 small"></div>
-    <div class="col-md-6 big">
+    <div class="col-sm-3 small"></div>
+    <div class="col-sm-6 big">
       <i class="glyphicon glyphicon-play"></i> <span id="actual" style="font-size: 36px; ">{{ song.name }}</span>
     </div>
-    <div class="col-md-3 small"></div>
+    <div class="col-sm-3 small"></div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12" id="messages">
+    <div class="col-sm-12" id="messages">
       {% for key, flash in app.session.getFlashBag() %}
           <div class="alert alert-{{ key }}">
             {% for flashh in flash %}
@@ -43,31 +43,31 @@
 
   <div class="row" id="listen">
     <div class="message" style="display:none;"></div>
-    <div class="col-md-2 actions">
+    <div class="col-sm-2 actions">
       <a onclick="changeToPreviousVideo();" href="#" class="btn btn-warning btn-lg"><i class="glyphicon glyphicon-chevron-left"></i> Précédent</a>
     </div>
-    <div class="col-md-8" style="margin-top: 30px;">
+    <div class="col-sm-8" style="margin-top: 30px;">
       <div id="message"></div>
       <div id="player"></div>
     </div>
-    <div class="col-md-2 actions">
+    <div class="col-sm-2 actions">
       <a onclick="changeToNextVideo();" href="#" class="btn btn-success btn-lg">Suivant <i class="glyphicon glyphicon-chevron-right"></i></a>
     </div>
   </div>
 
   {% if userSong == false %}
     <div class="row" id="likes">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
+      <div class="col-sm-3"></div>
+      <div class="col-sm-6">
         <a href="javascript:void(0);" onclick="addToFavorites();" class="btn btn-danger"><i class="glyphicon glyphicon-heart"></i> Favoris</a>
         <a href="javascript:void(0);" onclick="neverAgain();" class="btn btn-black"><i class="glyphicon glyphicon-minus-sign"></i> Plus jamais</a>
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-sm-3"></div>
     </div>
   {% endif %}
 
   {#<div class="row" id="suggest">
-    <div class="col-md-12">
+    <div class="col-sm-12">
       <a href="#myModal" role="button" data-toggle="modal" class="btn btn-link">Proposer un son</a>
     </div>
   </div>#}

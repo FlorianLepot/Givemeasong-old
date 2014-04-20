@@ -14,12 +14,12 @@
                 <div id="ombre">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-sm-12">
                             <div class="row">
-                                <div class="col-md-1">
+                                <div class="col-sm-1">
                                     <div id="logo"></div>
                                 </div>
-                                <div class="col-md-11" id="login">
+                                <div class="col-sm-11" id="login">
                                     <ul class="nav nav-pills pull-right">
                                         <li class="active"><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
                                         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -64,7 +64,7 @@
             <div id="links">
               <div id="top"><img src="{{ asset('img/top.png') }}" alt="Top" style="margin-top: -18px;"></div>
               <div class="container">
-                <div class="col-md-offset-2 col-md-2">
+                <div class="col-sm-offset-2 col-sm-2">
                   <h2>Plan du site</h2>
                   <p><a href="{{ path('gmas_music_homepage') }}">Accueil</a><br />
                   {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -74,11 +74,11 @@
                   {# <a href="#">Mon compte</a><br /> #}
                   <a href="mailto:contact@givemeasong.com">Contact</a></p>
                 </div>
-                <div class="col-md-offset-1 col-md-3">
+                <div class="col-sm-offset-1 col-sm-3">
                   <h2>Partenaire</h2>
                   <p><a href="http://www.givemeashow.net">Give me a Show</a></p>
                 </div>
-                <div class="col-md-3">
+                <div class="col-sm-3">
                   <h2>Retrouvez-nous sur</h2>
                   <p><a href="https://www.facebook.com/givemeasong.official">Facebook</a><br />
                   <a href="https://twitter.com/GMASOfficial">Twitter</a></p>
