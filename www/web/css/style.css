@@ -249,6 +249,7 @@ body {
   background-color: #000000;
   border-color: #000000;
 }
+
 .btn-black:hover,
 .btn-black:focus,
 .btn-black:active,
@@ -257,10 +258,12 @@ body {
   background-color: #000000;
   border-color: #000000;
 }
+
 .btn-black:active,
 .btn-black.active {
   background-image: none;
 }
+
 .btn-black.disabled,
 .btn-black[disabled],
 .btn-black.disabled:hover,
@@ -274,6 +277,7 @@ body {
   background-color: #000000;
   border-color: #000000;
 }
+
 .btn-black .badge {
   color: #000000;
   background-color: #ffffff;
