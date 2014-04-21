@@ -1,0 +1,35 @@
+{% extends "GmasMusicBundle::layout.html.twig" %}
+
+{% block body %}
+  <div id="trailer">
+    <div class="col-sm-3 small"></div>
+    <div class="col-sm-6 big">
+        {{ page.name }}
+    </div>
+    <div class="col-sm-3 small"></div>
+  </div>
+
+    <div class="container">
+
+        <div class="row">
+          <div class="col-sm-12" id="messages">
+            {% for key, flash in app.session.getFlashBag() %}
+                <div class="alert alert-{{ key }}">
+                  {% for flashh in flash %}
+                    {{ flashh }}
+                  {% endfor %}
+                </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12">
+                {{ page.content|raw }}
+            </div>
+        </div>
+
+    </div>
+
+
+{% endblock %}

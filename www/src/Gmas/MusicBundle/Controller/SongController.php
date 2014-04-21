@@ -68,6 +68,8 @@ class SongController extends Controller
                 $us = true;
         }
 
+        $headers = $em->getRepository('GmasMusicBundle:Header')->findOneByCategory($song->getCategory());
+
         $session = $this->getRequest()->getSession();
         $playlist = unserialize($session->get('playlist'));
 
@@ -95,7 +97,8 @@ class SongController extends Controller
             'next_song' => $next_song,
             'prev_song' => $prev_song,
             'userSong' => $us,
-            'id_session' => $session->getId()
+            'id_session' => $session->getId(),
+            'headers' => $headers
         ));
     }
 

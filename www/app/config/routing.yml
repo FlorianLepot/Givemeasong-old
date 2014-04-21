@@ -1,3 +1,8 @@
+gmas_public:
+    resource: "@GmasPublicBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 _welcome:
     pattern:  /
     defaults: { _controller: GmasMusicBundle:Song:index }

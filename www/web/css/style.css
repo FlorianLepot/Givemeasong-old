@@ -9,8 +9,79 @@ body {
 #site {
     background-color: #eee5dc;
 }
-#header {
+
+#header.head-home {
     background: url('../img/bg.jpg') top right no-repeat;
+    height: 400px;
+}
+
+#header.head-reggae-1 {
+    background: url('../img/head/reggae-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-bitchplz-1 {
+    background: url('../img/head/bitchplz-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-calme-1 {
+    background: url('../img/head/calme-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-checklabasse-1 {
+    background: url('../img/head/checklabasse-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-droguedure-1 {
+    background: url('../img/head/droguedure-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-ghetto-1 {
+    background: url('../img/head/ghetto-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-party-1 {
+    background: url('../img/head/party-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-planer-1 {
+    background: url('../img/head/planer-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-random-1 {
+    background: url('../img/head/random-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-rock-1 {
+    background: url('../img/head/rock-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-suicidaire-1 {
+    background: url('../img/head/suicidaire-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-venere-1 {
+    background: url('../img/head/venere-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-epic-1 {
+    background: url('../img/head/epic-1.jpg') top center no-repeat;
+    height: 400px;
+}
+
+#header.head-wtf-1 {
+    background: url('../img/head/wtf-1.jpg') top center no-repeat;
     height: 400px;
 }
 

@@ -10,14 +10,14 @@
 
     <body>
         <div id="site">
-            <div id="header">
+            <div id="header" class="head-{% block header %}home{% endblock %}">
                 <div id="ombre">
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
                             <div class="row">
                                 <div class="col-sm-1">
-                                    <div id="logo"></div>
+                                    <div id="logo"><a href="{{ path('gmas_music_homepage') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
                                 </div>
                                 <div class="col-sm-11" id="login">
                                     <ul class="nav nav-pills pull-right">

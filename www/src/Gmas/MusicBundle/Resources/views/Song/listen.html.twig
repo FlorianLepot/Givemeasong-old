@@ -1,5 +1,7 @@
 {% extends "GmasMusicBundle::layout.html.twig" %}
 
+{% block header %}{{ headers.slug }}{% endblock %}
+
 {% block body %}
 {% form_theme form 'GmasUserBundle:Form:fields.html.twig' %}
 
