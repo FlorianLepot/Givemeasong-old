@@ -390,3 +390,10 @@ body {
 #popover-content {
     font-size: 12px;
 }
+
+#fixed-menu {
+    position: absolute;
+    left: 60px;
+    top: 420px;
+    width: 80px;
+}

@@ -43,6 +43,7 @@ class Song
 
     /**
      * @ORM\ManyToOne(targetEntity="Gmas\UserBundle\Entity\User", inversedBy="songs")
+     * @ORM\JoinColumn(nullable=true)
      */
     private $user;
 

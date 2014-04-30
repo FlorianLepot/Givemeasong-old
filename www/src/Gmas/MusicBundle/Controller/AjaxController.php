@@ -247,6 +247,72 @@ class AjaxController extends Controller
         return new Response(json_encode($response));
     }
 
+    public function addSongAction() {
+        $request = $this->container->get('request');
+        $em = $this->getDoctrine()->getManager();
+
+        $youtubeid = $request->request->get('youtubeid');
+        $category = $em->getRepository('GmasMusicBundle:Categories')->find($request->request->get('category'));
+
+        $song = new Song();
+
+        $tmplink = explode('v=', $youtubeid);
+        if(isset($tmplink[1])) {
+            $tmplink2 = explode('&', $tmplink[1]);
+            if(isset($tmplink2[0])) {
+                $song->setYoutubeid($tmplink2[0]);
+                $song->setCategory($category);
+                if($this->getUser() != null)
+                    $song->setUser($this->container->get('security.context')->getToken()->getUser());
+                $song->setStatut(0);
+                $song->setDeadlink(0);
+
+                $xml = @file_get_contents("http://gdata.youtube.com/feeds/api/videos/".$song->getYoutubeid());
+                preg_match('#<title(.*?)>(.*)<\/title>#is', $xml, $resultTitre);
+
+                if(isset($resultTitre[count($resultTitre) - 1])) {
+                    $song->setName($resultTitre[count($resultTitre) - 1]);
+
+                    $song_verif = $em->getRepository('GmasMusicBundle:Song')->findBy(array('youtubeid' => $tmplink2, 'category' => $category));
+
+                    $em = $this->getDoctrine()->getManager();
+
+                    $stats = new StatsSong();
+                    $em->persist($stats);
+
+                    if(count($song_verif) == 0) {
+                        $song->setStats($stats);
+                        $em->persist($song);
+
+                        $em->flush();
+                        $flash = 'success';
+                        $text = '<strong>'.$song->getName().'</strong> a bien été proposée pour la playlist <strong>'.$category->getName().'</strong><br> Elle sera disponible dès que nous la validerons. Merci !';
+                    }
+                    else {
+                        $flash = 'danger';
+                        $text = '<strong>'.$song->getName().'</strong> est déjà disponible dans cette playlist !';
+                    }
+                }
+                else {
+                    $flash = 'danger';
+                    $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
+                }
+            }
+            else {
+                $flash = 'danger';
+                $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
+            }
+        }
+        else {
+            $flash = 'danger';
+            $text = '<strong>Le lien Youtube n\'est pas valide !</strong>';
+        }
+
+        $response = array("code" => 100, "success" => true, "flash" => $flash, "text" => $text);
+
+        return new Response(json_encode($response));
+    }
+
 
     public function admin_addSongAction() {
         $request = $this->container->get('request');

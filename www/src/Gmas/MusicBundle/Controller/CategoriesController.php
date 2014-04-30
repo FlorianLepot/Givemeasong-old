@@ -259,6 +259,23 @@ class CategoriesController extends Controller
         ;
     }
 
+    /**
+     * Finds and displays a Categories entity.
+     *
+     * @Template()
+     * @Template("GmasMusicBundle:Categories:getCategoriesTemplate.html.twig")
+     */
+    public function getCategoriesTemplateAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('GmasMusicBundle:Categories')->findAll();
+
+        return array(
+            'categories'      => $entities,
+        );
+    }
+
     public function admin_listAction() {
         $session = $this->getRequest()->getSession();
         $request = $this->get('request');

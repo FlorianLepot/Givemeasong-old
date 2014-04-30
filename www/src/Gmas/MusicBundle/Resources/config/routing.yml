@@ -75,5 +75,9 @@ gmas_music_songs_ajax_deadlinks_keep:
     defaults: { _controller: GmasMusicBundle:Ajax:admin_deadlinks_keep, youtubeid: null }
 
 gmas_music_admin_songs_ajax_add:
-    pattern:  /admin/songs/add
+    pattern:  /admin/songs/addXAdmin
     defaults: { _controller: GmasMusicBundle:Ajax:admin_addSong }
+
+gmas_music_songs_ajax_add:
+    pattern:  /songs/add
+    defaults: { _controller: GmasMusicBundle:Ajax:addSong }

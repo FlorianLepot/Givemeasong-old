@@ -1,0 +1,23 @@
+<div id="choose-playlists-content">
+    <div class="head hide"><strong>Choisis ce que tu veux !</strong></div>
+    <div class="content hide">
+        <div style="width: 220px;">
+            <p>Sélectionne les playlists que tu veux écouter :</p>
+            <p class="clearfix">
+                <span style="float:right;"><a href="javascript:void(0);" onclick="uncheckAllBox();">Aucune</a></span>
+                <span style="float:left;"><a href="javascript:void(0);" onclick="checkAllBox();">Toutes</a></span>
+            </p>
+            <form method="POST" action="{{ path('gmas_music_categories_route', {'category_id': 0}) }}">
+                <div class="form-group">
+                    {% for category in categories %}
+                        <label class="checkbox">
+                        <input type="checkbox" name="playlists[]" value="{{ category.id }}"> {{ category.name }}
+                        </label>
+                    {% endfor %}
+                </div>
+                <hr />
+                <button type="submit" class="btn btn-success btn-block">Fais moi rêver !</button>
+            </form>
+        </div>
+    </div>
+</div>
