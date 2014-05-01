@@ -17,7 +17,7 @@
         <div id="fixed-menu" style="z-index:2;">
             <div class="breadcrumb" style="text-align: center;">
                 <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 5px;"><strong>Menu</strong></p>
-                <p style="Retourner à l'accueil"><a href="{{ path('gmas_music_homepage') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>
+                <p title="Retourner à l'accueil" style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="{{ path('gmas_music_homepage') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>
                 <p title="Envoie tes meilleurs sons !"><a href="javascript:void(0);" id="add-song" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a></p>
                 <div id="add-song-content">
                     <div class="head hide"><strong>Ajouter une musique</strong></div>
@@ -26,11 +26,11 @@
                         <div style="width: 180px; margin-left: 10px; margin-right: 10px;">{{ render(controller('GmasMusicBundle:Song:getCreateForm')) }}</div>
                     </div>
                 </div>
-                <p title="Choisis ce que tu veux écouter !"><a href="javascript:void(0);" class="btn btn-warning" id="choose-playlists"><i class="glyphicon glyphicon-list"></i></a></p>
+                <p title="Choisis ce que tu veux écouter !"><a href="javascript:void(0);" class="btn btn-warning" id="choose-playlists"><i class="glyphicon glyphicon-music"></i></a></p>
                 {{ render(controller("GmasMusicBundle:Categories:getCategoriesTemplate")) }}
 
-                <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="http://mob.givemeasong.com" class="btn btn-info" target="_blank"><i class="glyphicon glyphicon-signal"></i></a></p>
-                <p><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://www.givemeasong.com" class="btn btn-primary" target="_blank"><i class="glyphicon glyphicon-share"></i></a></p>
+                <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;" title="Découvre la télécommande !"><a href="http://mob.givemeasong.com" class="btn btn-info" target="_blank"><i class="glyphicon glyphicon-signal"></i></a></p>
+                <p title="Fais tourner Give me a Song à tes potes !"><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://www.givemeasong.com" class="btn btn-primary" target="_blank"><i class="glyphicon glyphicon-share"></i></a></p>
             </div>
         </div>
 
