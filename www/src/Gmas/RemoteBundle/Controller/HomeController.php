@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class HomeController extends Controller
 {
     /**
-     * @Route("/remote", name="remote_home")
+     * @Route("/", name="remote_home", host="%remote_host%")
      * @Method("GET")
      * @Template()
      */
@@ -23,7 +23,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/remote/security/{session}/{ident}", name="remote_client_security")
+     * @Route("/security/{session}/{ident}", name="remote_client_security", host="%remote_host%")
      * @Method("GET")
      * @Template()
      */
@@ -36,7 +36,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/remote/auth", name="remote_client_security_auth")
+     * @Route("/security/auth", name="remote_client_security_auth", host="%remote_host%")
      * @Method("POST")
      */
     public function authAction(Request $request)
@@ -48,7 +48,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @Route("/remote/client/{session}/{ident}", name="remote_client_show")
+     * @Route("/telecommande/{session}/{ident}", name="remote_client_show", host="%remote_host%")
      * @Method("GET")
      * @Template()
      */

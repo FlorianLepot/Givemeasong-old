@@ -13,6 +13,7 @@ parameters:
 
     ip:                195.154.78.2
     remote_url:        mob.givemeasong.com
+    remote_host:       mob.givemeasong.com
 
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
