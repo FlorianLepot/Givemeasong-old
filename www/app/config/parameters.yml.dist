@@ -11,5 +11,7 @@ parameters:
     mailer_user:       ~
     mailer_password:   ~
 
+    ip:                195.154.78.2
+
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt

@@ -135,8 +135,6 @@
                 $w.scroll(function() {
                     var scrollTop = $w.scrollTop();
                     var shouldBeFixed = scrollTop > 300;
-                    console.log('scrollTop : ' + scrollTop);
-                    console.log('shouldBeFixed : ' + shouldBeFixed);
                     if (shouldBeFixed && !isFixed) {
                         nav.css({
                             position: 'fixed',

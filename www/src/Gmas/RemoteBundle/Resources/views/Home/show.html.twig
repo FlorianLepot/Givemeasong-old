@@ -1,0 +1,86 @@
+{% extends "GmasRemoteBundle::layout.html.twig" %}
+
+{% block body %}
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="page-header">Télécommande Give me a Song!</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <p style="text-align: center" class="well well-sm">
+        <strong>Session courante :</strong><br />
+        <span id="session"><em>Chargement ...</em></span>
+        <br/>
+        <a class="btn btn-info btn-sm" href="{{ path('remote_home') }}">
+          <span class="glyphicon glyphicon-retweet"></span> Changer
+        </a>
+        <br /><br />
+      </p>
+
+      <p style="text-align: center" class="well well-sm">
+        <strong>A l'&eacute;coute :</strong><br />
+        <span id="listening"><em>Chargement ...</em></span>
+        <br /><br />
+      </p>
+
+      <p style="text-align: center" class="well well-sm">
+        <button id="previous" type="button" class="btn btn-warning btn-lg">&larr; Pr&eacute;cedent</button>
+        <button id="pause" type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-pause"></span></button>
+        <button id="next" type="button" class="btn btn-success btn-lg">Suivant &rarr;</button>
+
+        <br /><br />
+
+        <button id="refresh" type="button" class="btn btn-primary">
+          <span class="glyphicon glyphicon-refresh"></span> Rafraichir
+        </button>
+      </p>
+    </div>
+  </div>
+{% endblock %}
+
+
+{% block scripts %}
+  <script type="text/javascript">
+      var socket = io.connect('{{ ip }}:1337');
+      var remotekey;
+
+      socket.on('listening', function (data) {
+        $('#listening').html(data.title);
+      });
+
+      socket.on('get-remote-key', function (data) {
+          remotekey = data;
+      });
+
+      $('#previous').click(function () {
+          socket.emit('previous');
+      });
+
+      $('#next').click(function () {
+          socket.emit('next');
+      });
+
+      $('#pause').click(function () {
+          socket.emit('pause');
+      });
+
+      $('#refresh').click(function () {
+          $('#listening').html('<em>Chargement ...</em>');
+          socket.emit('refresh');
+          //location.reload();
+      });
+
+      function getURLParameter(name) {
+          return decodeURI(
+              (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+          );
+      }
+
+      var session = '{{ session }}';
+      var ident = '{{ ident }}';
+      $('#session').html('<em>' + ident +'</em>');
+      socket.emit('join-mobile', { session: session});
+  </script>
+{% endblock %}

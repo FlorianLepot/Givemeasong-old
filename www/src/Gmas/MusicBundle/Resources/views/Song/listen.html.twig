@@ -79,6 +79,14 @@
       <input type="checkbox" id="telecommande"> <strong>Activer la télécommande</strong>
     </label>
   </div>
+
+  <form class="form-inline" role="form" id="remote-block" style="width: 130px; margin-left: auto; margin-right: auto;">
+    <div class="form-group">
+      <label class="control-label">Code</label>
+      <input class="form-control" id="remotekey" type="text" disabled>
+    </div>
+  </form>
+
 </div>
 
 
@@ -260,14 +268,26 @@ function pauseVideo() {
 function playVideo() {
   player.playVideo();
 }
-
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+  var remoteid = 0;
+  $("#remote-block").hide();
+
+  $("#telecommande").on('click', function() {
+    if(remoteid == 0)
+      $("#remote-block").show();
+    else
+      $("#remote-block").hide();
+
+      remoteid = (remoteid + 1) % 2;
+  });
+
   // Connexion à mob.givemeasong.net sur le port 1337
-  var socket = io.connect('195.154.78.2:1337');
+  var socket = io.connect('{{ ip }}:1337');
 
   // Envoi des 2 commandes au serveur pour s'ajouter à la liste des desktops
-  socket.emit('join-server', { session: '{{ id_session }}', ident: '{{ app.user.username }}'});
+  socket.emit('join-server', { session: '{{ id_session }}', ident: '{{ app.user.username }}'} );
   socket.emit('listening', { title: $('#songName').val() });
+  socket.emit('get-remote-key');
 
   // Dès que la commande "next" est reçue :
   socket.on('next', function () {
@@ -280,6 +300,12 @@ function playVideo() {
     if($("#telecommande").prop("checked")) {
       changeToPreviousVideo();
     }
+  });
+
+  socket.on('get-remote-key', function(data) {
+    console.log(data);
+    $("#remotekey").val(data);
+    $("#remotekey").attr('style', 'width: 58px;');
   });
 
   socket.on('pause', function () {

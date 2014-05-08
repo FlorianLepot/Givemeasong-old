@@ -1,0 +1,64 @@
+{% extends "GmasRemoteBundle::layout.html.twig" %}
+
+{% block body %}
+<div class="row">
+  <div class="col-sm-12">
+    <h1 class="page-header">Télécommande Give me a Song!</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 text-center">
+    <form method="POST" role="form" id="security-check">
+      <legend>Entrez le code de la télécommande</legend>
+
+      <div class="form-group" style="width: 80px; margin-left: auto; margin-right: auto;">
+        <input type="text" class="form-control input-lg" id="code" placeholder="Code" name="code">
+      </div>
+
+      <div class="form-group" style="width: 90px; margin-left: auto; margin-right: auto;">
+        <button type="submit" class="btn btn-primary btn-lg">Valider</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+  var socket = io.connect('{{ ip }}:1337');
+
+  var session = '{{ session }}';
+  var ident = '{{ ident }}';
+  socket.emit('join-mobile', { session: session});
+
+  socket.on('check-code', function(data) {
+    if(data == true) {
+      $.post(
+        "{{ path('remote_client_security_auth') }}",
+        {
+          session: "{{ session }}",
+          ident: "{{ ident }}"
+        },
+        function() {
+          window.location.href = "{{ path('remote_client_show', { 'session': session, 'ident': ident }) }}";
+        }
+      );
+    }
+    else {
+      window.location.href = "{{ path('remote_home') }}";
+    }
+  });
+
+</script>
+
+<script type="text/javascript">
+  $("#security-check").submit(function() {
+    var keycode = $("#code").val();
+    socket.emit('check-code', { code: keycode });
+    console.log('coucou');
+    return false;
+  });
+</script>
+{% endblock %}

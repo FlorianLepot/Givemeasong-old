@@ -1,3 +1,8 @@
+gmas_remote:
+    resource: "@GmasRemoteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 gmas_public:
     resource: "@GmasPublicBundle/Controller/"
     type:     annotation

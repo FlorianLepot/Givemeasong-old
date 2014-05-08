@@ -32,7 +32,8 @@ var addDesktop = function (socket, data) {
         socket: socket,
         session: data.session,
         ident: data.ident,
-        listening: null
+        listening: null,
+        remotekey: Math.floor(Math.random() * 9000) + 1000
     }
     desktops.push(desktop);
     return desktop;
@@ -114,6 +115,10 @@ io.sockets.on('connection', function (socket) {
                 mobiles[i].socket.emit('listening', data);
         });
 
+        socket.on('get-remote-key', function () {
+            desktop.socket.emit('get-remote-key', desktop.remotekey);
+        });
+
         socket.on('disconnect', function () {
             removeDesktop(desktop);
         });
@@ -123,6 +128,14 @@ io.sockets.on('connection', function (socket) {
         var mobile = addMobile(socket, data);
 
         refresh(mobile);
+
+        socket.on('check-code', function(data) {
+            var desktop = getDesktopSession(mobile);
+            if(desktop.remotekey == data.code)
+                mobile.socket.emit('check-code', true);
+            else
+                mobile.socket.emit('check-code', false);
+        })
 
         socket.on('next', function () {
             var desktop = getDesktopSession(mobile);
