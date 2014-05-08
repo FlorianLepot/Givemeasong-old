@@ -73,6 +73,8 @@ var getSessions = function (type) {
             sessions.push(desktops[i].session);
         else if(type == 1)
             sessions.push(desktops[i].ident);
+        else if(type == 2)
+            sessions.push(desktops[i].listening);
     }
     return sessions;
 }
@@ -80,6 +82,10 @@ var getSessions = function (type) {
 var removeDesktop = function(desktop) {
     for(var i=0; i<desktops.length; i++) {
         if(desktop.session === desktops[i].session) {
+            var mobiles = getMobileSessions(desktop);
+            for(var i = 0; i < mobiles.length; i++)
+                mobiles[i].socket.emit('disconnected');
+
             desktops.splice(i, 1);
             return;
         }
@@ -99,7 +105,7 @@ var refresh = function (mobile) {
     if(getDesktopSession(mobile) && getDesktopSession(mobile).listening != null)
         mobile.socket.emit('listening', {title: getDesktopSession(mobile).listening});
 
-    mobile.socket.emit('sessions', { list_session: getSessions(0), list_ident: getSessions(1) });
+    mobile.socket.emit('sessions', { list_session: getSessions(0), list_ident: getSessions(1), list_listening: getSessions(2) });
 
 }
 

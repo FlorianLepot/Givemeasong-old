@@ -1,17 +1,35 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
     <head>
-        <title>Télécommande | Give me a Song! </title>
-        <meta charset="UTF-8">
-        <meta name=description content="">
-        <meta name=viewport content="width=device-width, initial-scale=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Bootstrap CSS -->
-        <link href="{{ asset('css/bootstrap.css')}}" rel="stylesheet" media="screen">
+        <meta charset="utf-8">
+        <title>Give me a Song!</title>
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <link rel="icon" href="favicon.ico" />
+
+        <meta property="og:title" content="Give me a Song!" />
+        <meta property="og:description" content="Tu sais jamais quoi écouter, t'as envie d'écouter de découvrir de nouveaux sons ? Give me a Song t'en propose des centaines en fonction de ton humeur ou d'un thème particulier que tu peux choisir ! Ramène toi sur www.givemeasong.com, inscris toi et fais tourner à tes potes !" />
+        <meta property="og:url" content="http://www.givemeasong.com" />
+        <meta property="og:image" content="{{ asset('img/logo_fb.png') }}" />
     </head>
-    <body>
-        <div class="container">
-            {% block body %}{% endblock %}
+
+    <body id="header" class="head-planer-1-lg">
+        <div id="site">
+            <div id="header" class="head-{% block header %}planer-1-lg{% endblock %}">
+                <div id="ombre">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="logo" style="margin-left: auto; margin-right: auto;"><a href="{{ path('remote_home') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    {% block body %}{% endblock %}
+                </div>
+            </div>
         </div>
 
         <script src="{{ asset('js/jquery-2.0.3.min.js') }}"></script>

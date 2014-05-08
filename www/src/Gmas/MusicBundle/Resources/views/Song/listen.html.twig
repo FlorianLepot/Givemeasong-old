@@ -80,12 +80,18 @@
     </label>
   </div>
 
-  <form class="form-inline" role="form" id="remote-block" style="width: 130px; margin-left: auto; margin-right: auto;">
-    <div class="form-group">
-      <label class="control-label">Code</label>
-      <input class="form-control" id="remotekey" type="text" disabled>
-    </div>
-  </form>
+  <div class="row" id="remote-link">
+    <div style="width: 230px; margin-left: auto; margin-right: auto; margin-bottom: 13px;"><a href="{{ remote_url }}" target="_blank">Accéder à la télécommande</a></div>
+  </div>
+
+  <div class="row" id="remote-block">
+    <form class="form-inline" role="form" style="width: 160px; margin-left: auto; margin-right: auto;">
+      <div class="form-group">
+        <label class="control-label">Code</label>
+        <input class="form-control" id="remotekey" type="text" style="width: 80px;" disabled>
+      </div>
+    </form>
+  </div>
 
 </div>
 
@@ -271,14 +277,19 @@ function playVideo() {
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
   var remoteid = 0;
   $("#remote-block").hide();
+  $("#remote-link").hide();
 
   $("#telecommande").on('click', function() {
-    if(remoteid == 0)
+    if(remoteid == 0){
       $("#remote-block").show();
-    else
+      $("#remote-link").show();
+    }
+    else{
       $("#remote-block").hide();
+      $("#remote-link").hide();
+    }
 
-      remoteid = (remoteid + 1) % 2;
+    remoteid = (remoteid + 1) % 2;
   });
 
   // Connexion à mob.givemeasong.net sur le port 1337

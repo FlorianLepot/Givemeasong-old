@@ -55,6 +55,12 @@ body {
     height: 400px;
 }
 
+#header.head-planer-1-lg {
+    background-image: url('../img/head/planer-1-originale.jpg');
+    background-repeat: no-repeat;
+    background-position: 0% 15%;
+}
+
 #header.head-random-1 {
     background: url('../img/head/random-1.jpg') top center no-repeat;
     height: 400px;
@@ -294,7 +300,7 @@ body {
 }
 
 .actions {
-    padding-top: 240px;
+    padding-top: 190px;
 }
 
 #listen h2 {
@@ -396,4 +402,10 @@ body {
     left: 17px;
     top: 420px;
     width: 80px;
+}
+
+.remote-session {
+    margin: 3px;
+    width: 48%;
+    float: left;
 }

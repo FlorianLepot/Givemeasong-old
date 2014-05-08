@@ -29,7 +29,7 @@
                 <p title="Choisis ce que tu veux écouter !"><a href="javascript:void(0);" class="btn btn-warning" id="choose-playlists"><i class="glyphicon glyphicon-music"></i></a></p>
                 {{ render(controller("GmasMusicBundle:Categories:getCategoriesTemplate")) }}
 
-                <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;" title="Découvre la télécommande !"><a href="http://mob.givemeasong.com" class="btn btn-info" target="_blank"><i class="glyphicon glyphicon-signal"></i></a></p>
+                <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;" title="Découvre la télécommande !"><a href="{{ remote_url }}" class="btn btn-info" target="_blank"><i class="glyphicon glyphicon-signal"></i></a></p>
                 <p title="Fais tourner Give me a Song à tes potes !"><a href="https://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://www.givemeasong.com" class="btn btn-primary" target="_blank"><i class="glyphicon glyphicon-share"></i></a></p>
             </div>
         </div>
@@ -40,34 +40,34 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-sm-12">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <div id="logo"><a href="{{ path('gmas_music_homepage') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
-                                </div>
-                                <div class="col-sm-8" id="login">
-                                    <ul class="nav nav-pills pull-right">
-                                        <li class="active"><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
-                                        {% if is_granted("ROLE_ADMIN") %}
-                                        <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="glyphicon glyphicon-cog"></i>  Administration</a></li>
-                                        <li>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <div id="logo"><a href="{{ path('gmas_music_homepage') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
+                                    </div>
+                                    <div class="col-sm-8" id="login">
+                                        <ul class="nav nav-pills pull-right">
+                                            <li class="active"><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
+                                            {% if is_granted("ROLE_ADMIN") %}
+                                            <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="glyphicon glyphicon-cog"></i>  Administration</a></li>
+                                            <li>
 
-                                        </li>
-                                        {% endif %}
-                                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                                        <li><a href="{{ path('fos_user_security_logout') }}"><i class="glyphicon glyphicon-user"></i> Déconnexion</a></li>
-                                        {#<li><a href="{{ path('fos_user_profile_show') }}"><i class="glyphicon glyphicon-user"></i>  Mon compte</a></li>#}
-                                        {% else %}
-                                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                                        <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
-                                        {% endif %}
-                                    </ul>
+                                            </li>
+                                            {% endif %}
+                                            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                            <li><a href="{{ path('fos_user_security_logout') }}"><i class="glyphicon glyphicon-user"></i> Déconnexion</a></li>
+                                            {#<li><a href="{{ path('fos_user_profile_show') }}"><i class="glyphicon glyphicon-user"></i>  Mon compte</a></li>#}
+                                            {% else %}
+                                            <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                                            <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                                            {% endif %}
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         {% block body %}
         {% endblock %}

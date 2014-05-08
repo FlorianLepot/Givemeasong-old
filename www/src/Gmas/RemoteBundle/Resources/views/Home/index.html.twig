@@ -3,24 +3,26 @@
 {% block body %}
 <div class="row">
   <div class="col-sm-12">
-    <h1 class="page-header">Télécommande Give me a Song!</h1>
+    <h1 class="page-header">Télécommande</h1>
   </div>
 </div>
 
 <div class="row">
   <div class="col-sm-12">
-    <p style="text-align: center" class="well">
-      <strong>Sessions disponibles :</strong><br />
-      <ul id="sessions" class="well" >
-        <em>Chargement ...</em>
-      </ul>
-      <br /><br />
-    </p>
+    <div class="well">
+      <h3 style="margin-top: 10px; margin-bottom: 25px;">Sessions disponibles</h3>
+      <div class="list-group" id="sessions">
+        <div style="margin-left: auto; margin-right: auto;">Il n'y a aucune session disponible actuellement.</div>
+      </div>
+      <div class="clearfix"></div>
 
-    <p style="text-align: center" class="well">
-      <button id="refresh" type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">
-        <span class="glyphicon glyphicon-refresh"></span> Rafraichir
-      </button>
+      <br /><br />
+
+      <div style="text-align: center">
+        <button id="refresh" type="button" class="btn btn-primary" style="margin-left: auto; margin-right: auto;">
+          <span class="glyphicon glyphicon-refresh"></span> Rafraichir
+        </button>
+      </div>
     </p>
   </div>
 </div>
@@ -33,14 +35,18 @@
   socket.on('sessions', function (data) {
     $('#sessions').html('');
     var i;
-    for (i = 0; i < data.list_session.length; ++i) {
-      $('#sessions').append('<li><a href="{{ path('remote_client_security') }}/' + data.list_session[i] + '/' + data.list_ident[i] + '">' + data.list_ident[i] + '</a></li>');
+    if(data.list_session.length == 0) {
+      $("#sessions").html('<div style="margin-left: auto; margin-right: auto;">Il n\'y a aucune session disponible actuellement.</div>')
     }
-
+    else {
+      for (i = 0; i < data.list_session.length; ++i) {
+        $('#sessions').append('<a href="{{ path('remote_client_security') }}/' + data.list_session[i] + '/' + data.list_ident[i] + '" class="list-group-item remote-session"><h4 class="list-group-item-heading">' + data.list_ident[i] + '</h4><p class="list-group-item-text"><i class="glyphicon glyphicon-music"></i> ' + data.list_listening[i] + '</p></a>');
+      }
+    }
   });
 
   $('#refresh').click(function () {
-    $('#sessions').html('<em>Chargement ...</em>');
+    $('#sessions').html('<div style="margin-left: auto; margin-right: auto;">Il n\'y a aucune session disponible actuellement.</div>');
     socket.emit('refresh');
   });
 

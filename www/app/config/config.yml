@@ -73,3 +73,4 @@ fos_user:
 twig:
     globals:
         ip: %ip%
+        remote_url: %remote_url%
