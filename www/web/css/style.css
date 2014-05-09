@@ -404,6 +404,11 @@ body {
     width: 80px;
 }
 
+.remote-session {
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
  #block-sessions {
     margin-top: 15px;
  }
