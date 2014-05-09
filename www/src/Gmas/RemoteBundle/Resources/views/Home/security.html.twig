@@ -1,30 +1,24 @@
 {% extends "GmasRemoteBundle::layout.html.twig" %}
 
 {% block body %}
-<div class="row">
-  <div class="col-sm-12">
-    <h1 class="page-header">Télécommande Give me a Song!</h1>
-  </div>
-</div>
+  <div class="row" id="block-sessions">
+    <div class="col-xs-12 text-center">
+      <div class="well">
+        <form method="POST" role="form" id="security-check">
+          <legend>Entrez le code de la télécommande</legend>
 
-<div class="row">
-  <div class="col-sm-12 text-center">
-    <div class="well">
-      <form method="POST" role="form" id="security-check">
-        <legend>Entrez le code de la télécommande</legend>
+          <div class="form-group" style="width: 80px; margin-left: auto; margin-right: auto;">
+            <input type="text" class="form-control input-lg" id="code" placeholder="Code" name="code">
+          </div>
 
-        <div class="form-group" style="width: 80px; margin-left: auto; margin-right: auto;">
-          <input type="text" class="form-control input-lg" id="code" placeholder="Code" name="code">
-        </div>
+          <div class="form-group" style="width: 90px; margin-left: auto; margin-right: auto;">
+            <button type="submit" class="btn btn-primary btn-lg">Valider</button>
+          </div>
 
-        <div class="form-group" style="width: 90px; margin-left: auto; margin-right: auto;">
-          <button type="submit" class="btn btn-primary btn-lg">Valider</button>
-        </div>
-
-      </form>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 {% endblock %}
 
 {% block scripts %}

@@ -82,7 +82,7 @@ var getSessions = function (type) {
 var removeDesktop = function(desktop) {
     for(var i=0; i<desktops.length; i++) {
         if(desktop.session === desktops[i].session) {
-            var mobiles = getMobileSessions(desktop);
+            var mobiles = getMobileSessions(desktops[i]);
             for(var i = 0; i < mobiles.length; i++)
                 mobiles[i].socket.emit('disconnected');
 
