@@ -274,10 +274,12 @@ function pauseVideo() {
 function playVideo() {
   player.playVideo();
 }
+
+var remoteid = 0;
+$("#remote-block").hide();
+$("#remote-link").hide();
+
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-  var remoteid = 0;
-  $("#remote-block").hide();
-  $("#remote-link").hide();
 
   $("#telecommande").on('click', function() {
     if(remoteid == 0){
