@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
     <head>
         <meta charset="utf-8">
         <title>Give me a Song!</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
         <link rel="icon" href="favicon.ico" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <meta property="og:title" content="Give me a Song!" />
         <meta property="og:description" content="Tu sais jamais quoi écouter, t'as envie d'écouter de découvrir de nouveaux sons ? Give me a Song t'en propose des centaines en fonction de ton humeur ou d'un thème particulier que tu peux choisir ! Ramène toi sur www.givemeasong.com, inscris toi et fais tourner à tes potes !" />
@@ -14,7 +16,7 @@
     </head>
 
     <body>
-        <div id="fixed-menu" style="z-index:2;">
+        <div id="fixed-menu" style="z-index:2;" class="hidden-phone">
             <div class="breadcrumb" style="text-align: center;">
                 <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 5px;"><strong>Menu</strong></p>
                 <p title="Retourner à l'accueil" style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="{{ path('gmas_music_homepage') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>

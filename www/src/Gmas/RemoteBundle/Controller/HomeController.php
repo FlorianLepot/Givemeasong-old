@@ -13,7 +13,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class HomeController extends Controller
 {
     /**
-     * @Route("/", name="remote_home", host="%remote_host%")
+     * @Route("/telecommande", name="remote_home", host="%remote_host%")
      * @Method("GET")
      * @Template()
      */
