@@ -74,24 +74,28 @@
     </div>
   </div>#}
 
-  <div class="checkbox" style="margin-top: 30px; margin-left: auto; margin-right: auto; width: 250px;">
-    <label>
-      <input type="checkbox" id="telecommande"> <strong>Activer la télécommande</strong>
-    </label>
-  </div>
+  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-  <div class="row" id="remote-link">
-    <div style="width: 230px; margin-left: auto; margin-right: auto; margin-bottom: 13px;"><a href="{{ remote_url }}" target="_blank">Accéder à la télécommande</a></div>
-  </div>
+    <div class="checkbox" style="margin-top: 30px; margin-left: auto; margin-right: auto; width: 250px;">
+      <label>
+        <input type="checkbox" id="telecommande"> <strong>Activer la télécommande</strong>
+      </label>
+    </div>
 
-  <div class="row" id="remote-block">
-    <form class="form-inline" role="form" style="width: 160px; margin-left: auto; margin-right: auto;">
-      <div class="form-group">
-        <label class="control-label">Code</label>
-        <input class="form-control" id="remotekey" type="text" style="width: 80px;" disabled>
-      </div>
-    </form>
-  </div>
+    <div class="row" id="remote-link">
+      <div style="width: 230px; margin-left: auto; margin-right: auto; margin-bottom: 13px;"><a href="{{ remote_url }}" target="_blank">Accéder à la télécommande</a></div>
+    </div>
+
+    <div class="row" id="remote-block">
+      <form class="form-inline" role="form" style="width: 160px; margin-left: auto; margin-right: auto;">
+        <div class="form-group">
+          <label class="control-label">Code</label>
+          <input class="form-control" id="remotekey" type="text" style="width: 80px;" disabled>
+        </div>
+      </form>
+    </div>
+
+  {% endif %}
 
 </div>
 
@@ -275,11 +279,11 @@ function playVideo() {
   player.playVideo();
 }
 
-var remoteid = 0;
-$("#remote-block").hide();
-$("#remote-link").hide();
-
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+  var remoteid = 0;
+  $("#remote-block").hide();
+  $("#remote-link").hide();
 
   $("#telecommande").on('click', function() {
     if(remoteid == 0){
