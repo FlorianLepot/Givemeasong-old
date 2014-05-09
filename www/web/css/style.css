@@ -409,3 +409,7 @@ body {
     width: 48%;
     float: left;
 }
+
+ #block-sessions {
+    margin-top: 15px;
+ }
