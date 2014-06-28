@@ -22,25 +22,19 @@ class SongController extends Controller
     /**
      * Lists all Song entities.
      *
-     * @Route("/", name="song")
+     * @Route("/", name="homepage")
      * @Method("GET")
      * @Template()
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entities = $em->getRepository('GmasMusicBundle:Categories')->findAll();
-
-        return array(
-            'list_categories' => $entities,
-        );
+        return array();
     }
 
     /**
     * Play the song
     *
-    * @Route("/listen/{song_id}", name="song_listen")
+    * @Route("/listen/{song_id}", name="song_listen", options={"expose"=true})
     * @Method("GET")
     * @Template()
     */

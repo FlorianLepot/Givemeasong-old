@@ -13,6 +13,22 @@ use BFC\UserBundle\Form\PageType;
 class PageController extends Controller
 {
     /**
+     * @Route("/index/content", name="gmas_music_homepage_content", options={"expose"=true})
+     * @Method("GET")
+     * @Template()
+     */
+    public function index_contentAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entities = $em->getRepository('GmasMusicBundle:Categories')->findAll();
+
+        return array(
+            'list_categories' => $entities,
+        );
+    }
+
+    /**
      * @Route("/page/{slug}")
      * @Method("GET")
      * @Template()

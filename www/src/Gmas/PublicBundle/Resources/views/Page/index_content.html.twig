@@ -1,0 +1,215 @@
+<div id="trailer">
+  <div class="col-sm-3 small"></div>
+  <div class="col-sm-6 big">
+    Envie d'écouter un bon son ?
+  </div>
+  <div class="col-sm-3 small"></div>
+</div>
+
+<div class="container">
+
+  <a href="#/listen/ek27tmuxwf/256" class="btn btn-info">&Eacute;couter une musique</a>
+
+  <div class="row">
+    <div class="col-sm-12" id="messages">
+      {% for key, flash in app.session.getFlashBag() %}
+          <div class="alert alert-{{ key }}">
+            {% for flash_ in flash %}
+              {{ flash_ }}
+            {% endfor %}
+          </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-sm-offset-2 col-sm-4 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 1}) }}">
+          <img src="{{ asset('img/quiroulebamboule.jpeg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Qui roule bamboule !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-4 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 2}) }}">
+          <img src="{{ asset('img/laissemoiplanergros.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Laisse moi planer gros !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 5}) }}">
+          <img src="{{ asset('img/calme.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Calme</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 6}) }}">
+          <img src="{{ asset('img/droguedure.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Drogue dure !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 7}) }}">
+          <img src="{{ asset('img/bitchplz.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Bitch plz j'suis raffiné !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 8}) }}">
+          <img src="{{ asset('img/ghetto.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Ambiance ghetto</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 9}) }}">
+          <img src="{{ asset('img/archivenere.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>J'suis archi vénère !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 10}) }}">
+          <img src="{{ asset('img/checklabasse.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Check la basse</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 11}) }}">
+          <img src="{{ asset('img/whatthefuck.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>What the fuck ?</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 13}) }}">
+          <img src="{{ asset('img/letsparty.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Let's party !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 16}) }}">
+          <img src="{{ asset('img/enviessuicidaires.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Envies suicidaires !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-1 col-sm-4 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 19}) }}">
+          <img src="{{ asset('img/sexdrugsandrocknroll.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Sex, drugs &amp; Rock 'n' Roll !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-2 col-sm-4 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <a href="{{ path('gmas_music_categories_route', {'category_id': 20}) }}">
+          <img src="{{ asset('img/fuckingepic.jpg') }}" alt="" width="310" height="70" />
+          <div class="description">
+            <h2>Fucking Epic !</h2>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-offset-4 col-sm-6 col-xs-12">
+    <div class="playlist">
+      <div class="content">
+        <div class="popover-markup">
+          <a href="javascript:void(0);" class="trigger" data-container="body" data-toggle="popover">
+            <img src="{{ asset('img/aleatoire.jpg') }}" alt="" width="310" height="70" />
+            <div class="description">
+              <h2>Aléatoire</h2>
+            </div>
+          </a>
+          <div class="head hide"><strong>Lecture aléatoire</strong></div>
+          <div class="content hide">
+            <p>Sélectionnez les playlists à inclure dans la lecture aléatoire :</p>
+            <p class="clearfix">
+              <span style="float:right;"><a href="javascript:void(0);" onclick="uncheckAllBox();">Aucune</a></span>
+              <span style="float:left;"><a href="javascript:void(0);" onclick="checkAllBox();">Toutes</a></span>
+            </p>
+            <form method="POST" action="{{ path('gmas_music_categories_route', {'category_id': 0}) }}">
+              <div class="form-group">
+                {% for category in list_categories %}
+                  <label class="checkbox">
+                    <input type="checkbox" name="playlists[]" value="{{ category.id }}"> {{ category.name }}
+                  </label>
+                {% endfor %}
+              </div>
+              <hr />
+              <button type="submit" class="btn btn-success btn-block">Fais moi rêver !</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

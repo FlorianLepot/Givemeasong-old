@@ -1,8 +1,4 @@
-{% extends "GmasMusicBundle::layout.html.twig" %}
 
-{% block header %}{{ headers.slug }}{% endblock %}
-
-{% block body %}
 {% form_theme form 'GmasUserBundle:Form:fields.html.twig' %}
 
 <!-- Modal -->
@@ -53,7 +49,7 @@
       <div id="player"></div>
     </div>
     <div class="col-sm-2 actions">
-      <a onclick="changeToNextVideo();" href="#" class="btn btn-success btn-lg">Suivant <i class="glyphicon glyphicon-chevron-right"></i></a>
+      <a onclick="changeToNextVideo();" href="#/listen/1" class="btn btn-success btn-lg">Suivant <i class="glyphicon glyphicon-chevron-right"></i></a>
     </div>
   </div>
 
@@ -103,10 +99,8 @@
   <div class="hide">
     <input id="songName" type="hidden" value="{{ song.name }}">
   </div>
-{% endblock %}
 
-{% block script %}
-
+<script>
 // Suggestion de musique
 function aButtonPressed(){
   var youtubeidvalue = $("#gmas_musicbundle_songsmalltype_youtubeid").val();
@@ -368,4 +362,4 @@ document.onkeydown = changeOnKeyDown;
 // Tooltips
 $('[data-rel=tooltip]').tooltip();
 
-{% endblock %}
+</script>

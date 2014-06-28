@@ -1,6 +1,8 @@
 gmas_music_homepage:
     pattern:  /
     defaults: { _controller: GmasMusicBundle:Music:index }
+    options:
+        expose: true
 
 gmas_music_categories_route:
     pattern:  /categories/listen/{category_id}
@@ -9,6 +11,8 @@ gmas_music_categories_route:
 gmas_music_songs_listen:
     pattern:  /songs/listen/{song_id}/{song_nexted}
     defaults: { _controller: GmasMusicBundle:Song:listen, song_nexted: null }
+    options:
+        expose: true
 
 gmas_music_admin_homepage:
     pattern:  /admin

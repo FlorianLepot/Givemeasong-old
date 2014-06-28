@@ -15,7 +15,7 @@
         <meta property="og:image" content="{{ asset('img/logo_fb.png') }}" />
     </head>
 
-    <body>
+    <body ng-app='gmasApp'>
         <div id="fixed-menu" style="z-index:2;" class="hidden-phone">
             <div class="breadcrumb" style="text-align: center;">
                 <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 5px;"><strong>Menu</strong></p>
@@ -71,45 +71,45 @@
                 </div>
             </div>
 
-        {% block body %}
-        {% endblock %}
-
-        <div id="footer">
-            <div class="content">
-            </div>
-
-            {% block footer %}
+            {% block body %}
             {% endblock %}
 
-            <div id="links">
-              <div id="top"><img src="{{ asset('img/top.png') }}" alt="Top" style="margin-top: -18px;"></div>
-              <div class="container">
-                <div class="col-sm-offset-2 col-sm-2">
-                  <h2>Plan du site</h2>
-                  <p><a href="{{ path('gmas_music_homepage') }}">Accueil</a><br />
-                  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                      <a href="{{ path('fos_user_registration_register') }}">Inscription</a><br />
-                      <a href="{{ path('fos_user_security_login') }}">Connexion</a><br />
-                  {% endif %}
-                  {# <a href="#">Mon compte</a><br /> #}
-                  <a href="mailto:contact@givemeasong.com">Contact</a></p>
+            <div id="footer">
+                <div class="content">
                 </div>
-                <div class="col-sm-offset-1 col-sm-3">
-                  <h2>Partenaire</h2>
-                  <p><a href="http://www.givemeashow.net">Give me a Show</a></p>
+
+                {% block footer %}
+                {% endblock %}
+
+                <div id="links">
+                  <div id="top"><img src="{{ asset('img/top.png') }}" alt="Top" style="margin-top: -18px;"></div>
+                  <div class="container">
+                    <div class="col-sm-offset-2 col-sm-2">
+                      <h2>Plan du site</h2>
+                      <p><a href="{{ path('gmas_music_homepage') }}">Accueil</a><br />
+                      {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                          <a href="{{ path('fos_user_registration_register') }}">Inscription</a><br />
+                          <a href="{{ path('fos_user_security_login') }}">Connexion</a><br />
+                      {% endif %}
+                      {# <a href="#">Mon compte</a><br /> #}
+                      <a href="mailto:contact@givemeasong.com">Contact</a></p>
+                    </div>
+                    <div class="col-sm-offset-1 col-sm-3">
+                      <h2>Partenaire</h2>
+                      <p><a href="http://www.givemeashow.net">Give me a Show</a></p>
+                    </div>
+                    <div class="col-sm-3">
+                      <h2>Retrouvez-nous sur</h2>
+                      <p><a href="https://www.facebook.com/givemeasong.official">Facebook</a><br />
+                      <a href="https://twitter.com/GMASOfficial">Twitter</a></p>
+                    </div>
+                  </div>
                 </div>
-                <div class="col-sm-3">
-                  <h2>Retrouvez-nous sur</h2>
-                  <p><a href="https://www.facebook.com/givemeasong.official">Facebook</a><br />
-                  <a href="https://twitter.com/GMASOfficial">Twitter</a></p>
+                <div id="foot">
+                  <div class="container">
+                    &copy; Copyright Give me a Song! 2013 - 2014 - Tous droits réservés - Design by <a href="http://www.colinecherbonnel.com/">Coline Cherbonnel</a> - Dev. by <a href="http://www.florianlepot.fr/">Florian Lepot</a>
+                  </div>
                 </div>
-              </div>
-            </div>
-            <div id="foot">
-              <div class="container">
-                &copy; Copyright Give me a Song! 2013 - 2014 - Tous droits réservés - Design by <a href="http://www.colinecherbonnel.com/">Coline Cherbonnel</a> - Dev. by <a href="http://www.florianlepot.fr/">Florian Lepot</a>
-              </div>
-            </div>
             </div>
             <div class="clearfix"></div>
         </div>
@@ -118,8 +118,17 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/0.9.16/socket.io.min.js"></script>
+
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+        <script src="{{ asset('bundles/gmasmusic/js/angularjs/app.js') }}"></script>
+
         <script src="{{ asset('js/smoothscrolling.js') }}"></script>
 
         <script>
