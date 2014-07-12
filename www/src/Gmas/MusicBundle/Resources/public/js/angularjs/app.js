@@ -7,11 +7,11 @@ gmasApp.config(function($routeProvider) {
             controller: ''
         })
         .when('/init', {
-            templateUrl: Routing.generate('gmas_music_homepage_content'),
+            templateUrl: Routing.generate('gmas_music_listen_content'),
             controller: 'initController'
         })
-        .when('/listen/:playlist/:id', {
-            templateUrl: Routing.generate('gmas_music_homepage_content'),
+        .when('/listen/:playlist/:song', {
+            templateUrl: function(params){ return Routing.generate('gmas_music_listen_content', {'playlistId': params.playlist, 'songId': params.song}) },
             controller: ''
         })
         .otherwise({ redirectTo: '/' });

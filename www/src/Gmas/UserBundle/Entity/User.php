@@ -32,6 +32,12 @@ class User extends BaseUser
      */
     private $registration;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Gmas\MusicBundle\Entity\Playlist", mappedBy="user")
+     */
+    private $playlists;
+
+
     public function __construct()
     {
         parent::__construct();
@@ -65,7 +71,7 @@ class User extends BaseUser
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -106,5 +112,38 @@ class User extends BaseUser
     public function removeSong(\Gmas\MusicBundle\Entity\Song $songs)
     {
         $this->songs->removeElement($songs);
+    }
+
+    /**
+     * Add playlists
+     *
+     * @param \Gmas\MusicBundle\Entity\Playlist $playlists
+     * @return User
+     */
+    public function addPlaylist(\Gmas\MusicBundle\Entity\Playlist $playlists)
+    {
+        $this->playlists[] = $playlists;
+
+        return $this;
+    }
+
+    /**
+     * Remove playlists
+     *
+     * @param \Gmas\MusicBundle\Entity\Playlist $playlists
+     */
+    public function removePlaylist(\Gmas\MusicBundle\Entity\Playlist $playlists)
+    {
+        $this->playlists->removeElement($playlists);
+    }
+
+    /**
+     * Get playlists
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPlaylists()
+    {
+        return $this->playlists;
     }
 }

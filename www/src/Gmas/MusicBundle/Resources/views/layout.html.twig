@@ -19,7 +19,7 @@
         <div id="fixed-menu" style="z-index:2;" class="hidden-phone">
             <div class="breadcrumb" style="text-align: center;">
                 <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 5px;"><strong>Menu</strong></p>
-                <p title="Retourner à l'accueil" style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="{{ path('gmas_music_homepage') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>
+                <p title="Retourner à l'accueil" style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="{{ path('gmas_music_homepage_content') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>
                 <p title="Envoie tes meilleurs sons !"><a href="javascript:void(0);" id="add-song" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a></p>
                 <div id="add-song-content">
                     <div class="head hide"><strong>Ajouter une musique</strong></div>
@@ -44,11 +44,11 @@
                             <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <div id="logo"><a href="{{ path('gmas_music_homepage') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
+                                        <div id="logo"><a href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
                                     </div>
                                     <div class="col-sm-8" id="login">
                                         <ul class="nav nav-pills pull-right">
-                                            <li class="active"><a href="{{ path('gmas_music_homepage') }}">Accueil</a></li>
+                                            <li class="active"><a href="{{ path('homepage') }}">Accueil</a></li>
                                             {% if is_granted("ROLE_ADMIN") %}
                                             <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="glyphicon glyphicon-cog"></i>  Administration</a></li>
                                             <li>
@@ -86,7 +86,7 @@
                   <div class="container">
                     <div class="col-sm-offset-2 col-sm-2">
                       <h2>Plan du site</h2>
-                      <p><a href="{{ path('gmas_music_homepage') }}">Accueil</a><br />
+                      <p><a href="{{ path('homepage') }}">Accueil</a><br />
                       {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                           <a href="{{ path('fos_user_registration_register') }}">Inscription</a><br />
                           <a href="{{ path('fos_user_security_login') }}">Connexion</a><br />
@@ -195,7 +195,7 @@
             }
         });
 
-
+        {#
         // Ajouter aux favoris
         function addSong(){
 
@@ -220,6 +220,7 @@
                 );
             {% endif %}
         }
+        #}
 
         // Analytics
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

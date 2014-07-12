@@ -9,3 +9,4 @@ www/bin/
 www/composer.phar
 www/app/config/parameters.ini
 www/app/config/parameters.yml
+*~*

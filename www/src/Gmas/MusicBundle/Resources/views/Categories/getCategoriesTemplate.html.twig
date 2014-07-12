@@ -7,7 +7,7 @@
                 <span style="float:right;"><a href="javascript:void(0);" onclick="uncheckAllBox();">Aucune</a></span>
                 <span style="float:left;"><a href="javascript:void(0);" onclick="checkAllBox();">Toutes</a></span>
             </p>
-            <form method="POST" action="{{ path('gmas_music_categories_route', {'category_id': 0}) }}">
+            <form method="POST" action="{{ path('categories_listen', {'category_id': 0}) }}">
                 <div class="form-group">
                     {% for category in categories %}
                         <label class="checkbox">

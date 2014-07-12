@@ -7,8 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use BFC\UserBundle\Entity\Page;
-use BFC\UserBundle\Form\PageType;
 
 class PageController extends Controller
 {
@@ -25,6 +23,29 @@ class PageController extends Controller
 
         return array(
             'list_categories' => $entities,
+        );
+    }
+
+    /**
+     * @Route("/listen/{playlistId}/{songId}", name="gmas_music_listen_content", options={"expose"=true})
+     * @Method("GET")
+     * @Template("GmasPublicBundle:Page:listen_content.html.twig")
+     */
+    public function listenContentAction($playlistId, $songId)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $session = $this->get('session');
+        if ($session->get('playlist') == null || $session->get('playlist') != $playlist) {
+            $playlist = $em->getRepository('GmasMusicBundle:Playlist')->find($playlistId);
+            $session->set('playlist', $playlist);
+        }
+
+        $song = $em->getRepository('GmasMusicBundle:Song')->find($songId);
+
+        return array(
+            'song' => $song,
+            'playlist' => $playlist,
         );
     }
 

@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Gmas\MusicBundle\Entity\Categories;
 use Gmas\MusicBundle\Entity\StatsCategory;
+use Gmas\MusicBundle\Entity\Playlist;
 use Gmas\MusicBundle\Form\CategoriesType;
 
 /**
@@ -84,6 +85,58 @@ class CategoriesController extends Controller
         $session->set('playlist', serialize($playlist));
 
         return $this->redirect($this->generateUrl('gmas_music_songs_listen', array('song_id' => $playlist[0])));
+    }
+
+    /**
+    * Redirect user on the right playlist
+    *
+    * @Route("/{categoryId}", name="categories_start", options={"expose"=true})
+    * @Method("GET")
+    * @Template()
+    */
+    public function startAction($categoryId) {
+        $em = $this->getDoctrine()->getManager();
+
+        if($categoryId == 0) {
+            $request = $this->get('request');
+            $categories = $request->request->get('playlists');
+            if(!empty($categories))
+                $songs = $em->getRepository('GmasMusicBundle:Song')->findBy(array('statut' => 1, 'category' => $categories, 'deadlink' => 0));
+            else {
+                $session = $this->getRequest()->getSession();
+                $session->getFlashBag()->add('error', 'Vous devez sélectionner au moins une catégorie !');
+                return $this->redirect($this->generateUrl('gmas_music_homepage_content'));
+            }
+        }
+        else {
+            $category = $em->getRepository('GmasMusicBundle:Categories')->find($categoryId);
+            if($category === null) {
+                throw $this->createNotFoundException('Categories[category='.$category.'] inexistante');
+            }
+
+            $category->getStats()->setViews(1);
+            $em->persist($category);
+            $em->flush();
+
+            $songs = $em->getRepository('GmasMusicBundle:Song')->findBy(array('category' => $category->getId(), 'statut' => 1));
+        }
+
+        $playlist = new Playlist();
+        foreach ($songs as $song) {
+            $playlist->addSong($song);
+        }
+
+        if($this->getUser() != null) {
+            $playlist->setUser($this->getUser());
+        }
+
+        $em->persist($playlist);
+        $em->flush();
+
+        $session = $this->get('session');
+        $session->set('playlist', $playlist);
+
+        return $this->redirect($this->generateUrl('gmas_music_listen_content', array('playlistId' => $playlist->getId(), 'songId' => $playlist->getSongs()[0]->getId())));
     }
 
     /**

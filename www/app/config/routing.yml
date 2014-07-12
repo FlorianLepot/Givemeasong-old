@@ -17,7 +17,8 @@ gmas_user:
     prefix:   /
 
 gmas_music:
-    resource: "@GmasMusicBundle/Resources/config/routing.yml"
+    resource: "@GmasMusicBundle/Controller/"
+    type:     annotation
     prefix:   /
 
 fos_js_routing:

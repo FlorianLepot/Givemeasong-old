@@ -1,22 +1,4 @@
-{% form_theme form 'GmasUserBundle:Form:fields.html.twig' %}
-
 <!-- Modal -->
-<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <form class="form-horizontal" style="margin:0px;" id="form_suggest">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3 id="myModalLabel">Proposer un son</h3>
-    </div>
-    <div class="modal-body">
-      {{ form_widget(form) }}
-    </div>
-    <div class="modal-footer">
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-      <input type="button" class="btn btn-success" id="suggest" onclick="aButtonPressed();" value="Proposer">
-    </div>
-  </form>
-</div>
-
 <div id="trailer">
     <div class="col-sm-3 small"></div>
     <div class="col-sm-6 big">
@@ -100,27 +82,6 @@
   </div>
 
 <script>
-// Suggestion de musique
-function aButtonPressed(){
-  var youtubeidvalue = $("#gmas_musicbundle_songsmalltype_youtubeid").val();
-  var categoryvalue = $("#gmas_musicbundle_songsmalltype_category").val();
-
-  $.post('{{ path('gmas_music_songs_ajax_suggest') }}',
-    { youtubeid: youtubeidvalue, category: categoryvalue },
-    function(response){
-      if(response.code == 100 && response.success){
-        $('.modal-body #flash').remove();
-        $('.modal-body').prepend('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
-      }
-      else {
-        $('.modal-body #flash').remove();
-        $('.modal-body').prepend('<div id="flash" class="alert alert-danger"><button type="button" class="close" data-dismiss="alert">&times;</button><p>L\'adresse Youtube n\'est pas valide !</p></div>');
-      }
-    }, "json"
-  );
-}
-
-
 var actualSongId = {{ song.id }};
 var actualSongYoutubeid = '{{ song.youtubeid }}';
 var actualSongName = '{{ song.name }}';
@@ -128,7 +89,7 @@ var actualSongName = '{{ song.name }}';
 // Ajouter aux favoris
 function addToFavorites(){
 
-  $.get('{{ path('gmas_music_songs_ajax_like', { youtubeid: song.youtubeid }) }}',
+  $.get('{#{{ path('gmas_music_songs_ajax_like', { youtubeid: song.youtubeid }) }}#}',
     function(response){
       if(response.code == 100 && response.success){
         $('.message').html('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
@@ -145,7 +106,7 @@ function addToFavorites(){
 // Ajouter aux hates
 function neverAgain(){
 
-  $.get('{{ path('gmas_music_songs_ajax_hate', { youtubeid: song.youtubeid }) }}',
+  $.get('{#{{ path('gmas_music_songs_ajax_hate', { youtubeid: song.youtubeid }) }}#}',
     function(response){
       if(response.code == 100 && response.success){
         $('.message').html('<div id="flash" class="alert alert-' + response.flash + '"><button type="button" class="close" data-dismiss="alert">&times;</button><p>' + response.text + '</p></div>');
@@ -178,7 +139,7 @@ function loadVideo(response) {
   $("#actual").html(response.song_name);
   player.loadVideoById(response.youtubeid);
 
-  $.post('{{ path('gmas_music_songs_ajax_setlistenedsong') }}', { 'id': actualSongId },
+  $.post('{#{{ path('gmas_music_songs_ajax_setlistenedsong') }}#}', { 'id': actualSongId },
     function(response){ }, "json"
   );
 }
@@ -187,11 +148,11 @@ function changeToNextVideo(force) {
   /*
   - Gérer l'id dans les hates & likes (Juste à utiliser la variable stockée précédemment pour ça en JS et appeler la même méthode qu'avant en Ajax) + Changer dans le controller
   */
-  $.post('{{ path('gmas_music_songs_ajax_getnextyoutubeid') }}', { 'id': actualSongId },
+  $.post('{#{{ path('gmas_music_songs_ajax_getnextyoutubeid') }}#}', { 'id': actualSongId },
     function(response){
       if(response.code == 100 && response.success){
         if(force == 1) {
-          $.post('{{ path('gmas_music_songs_ajax_setnextedsong') }}', { 'id': actualSongId },
+          $.post('{#{{ path('gmas_music_songs_ajax_setnextedsong') }}#}', { 'id': actualSongId },
             function(responseosef){ }, "json"
           );
         }
@@ -200,21 +161,21 @@ function changeToNextVideo(force) {
         socket.emit('listening', { title: $('#songName').val() });
       }
       else if(response.code == 100 && response.success == false) {
-        window.location.href = "{{ path('gmas_music_homepage') }}";
+        window.location.href = "{#{{ path('gmas_music_homepage') }}#}";
       }
     }, "json"
   );
 }
 
 function changeToPreviousVideo() {
-  $.post('{{ path('gmas_music_songs_ajax_getpreviousyoutubeid') }}', { 'id': actualSongId },
+  $.post('{#{{ path('gmas_music_songs_ajax_getpreviousyoutubeid') }}#}', { 'id': actualSongId },
     function(response){
       if(response.code == 100 && response.success){
         loadVideo(response);
         socket.emit('listening', { title: $('#songName').val() });
       }
       else if(response.code == 100 && response.success == false) {
-        window.location.href = "{{ path('gmas_music_homepage') }}";
+        window.location.href = "{#{{ path('gmas_music_homepage') }}#}";
       }
     }, "json"
   );
@@ -246,9 +207,9 @@ function onPlayerStateChange(event) {
 
 function changeVideo(event) {
   if(event.data == 2 || event.data == 100 || event.data == 101 || event.data == 150 || event.data == 0) {
-    $.post('{{ path('gmas_music_songs_ajax_deadlink', { 'youtubeid': song.youtubeid }) }}',
-			function(response){ }, "json"
-		);
+    $.post('{#{{ path('gmas_music_songs_ajax_deadlink', { 'youtubeid': song.youtubeid }) }}#}',
+            function(response){ }, "json"
+        );
   }
 
   setTimeout(
