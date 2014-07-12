@@ -11,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 class PageController extends Controller
 {
     /**
-     * @Route("/index/content", name="gmas_music_homepage_content", options={"expose"=true})
+     * @Route("/index/content", name="homepage_content", options={"expose"=true})
      * @Method("GET")
      * @Template()
      */
@@ -27,7 +27,7 @@ class PageController extends Controller
     }
 
     /**
-     * @Route("/listen/{playlistId}/{songId}", name="gmas_music_listen_content", options={"expose"=true})
+     * @Route("/listen/{playlistId}/{songId}", name="listen_content", options={"expose"=true})
      * @Method("GET")
      * @Template("GmasPublicBundle:Page:listen_content.html.twig")
      */

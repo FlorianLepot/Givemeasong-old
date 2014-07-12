@@ -19,7 +19,7 @@
         <div id="fixed-menu" style="z-index:2;" class="hidden-phone">
             <div class="breadcrumb" style="text-align: center;">
                 <p style="border-bottom: 2px solid #E9E9ED; padding-bottom: 5px;"><strong>Menu</strong></p>
-                <p title="Retourner à l'accueil" style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="{{ path('gmas_music_homepage_content') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>
+                <p title="Retourner à l'accueil" style="border-bottom: 2px solid #E9E9ED; padding-bottom: 10px;"><a href="{{ path('homepage_content') }}" class="btn btn-default"><i class="glyphicon glyphicon-home"></i></a></p>
                 <p title="Envoie tes meilleurs sons !"><a href="javascript:void(0);" id="add-song" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></a></p>
                 <div id="add-song-content">
                     <div class="head hide"><strong>Ajouter une musique</strong></div>
@@ -128,6 +128,9 @@
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
         <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
         <script src="{{ asset('bundles/gmasmusic/js/angularjs/app.js') }}"></script>
+        <script src="{{ asset('bundles/gmasmusic/js/angularjs/factories/categories.js') }}"></script>
+        <script src="{{ asset('bundles/gmasmusic/js/angularjs/controllers/categoriesController.js') }}"></script>
+        <script src="{{ asset('bundles/gmasmusic/js/angularjs/controllers/homeController.js') }}"></script>
 
         <script src="{{ asset('js/smoothscrolling.js') }}"></script>
 

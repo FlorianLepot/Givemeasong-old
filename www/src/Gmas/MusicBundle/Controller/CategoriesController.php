@@ -3,6 +3,7 @@
 namespace Gmas\MusicBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -94,14 +95,14 @@ class CategoriesController extends Controller
     * @Method("GET")
     * @Template()
     */
-    public function startAction($categoryId) {
+    public function startAction(Request $request, $categoryId) {
         $em = $this->getDoctrine()->getManager();
 
         if($categoryId == 0) {
-            $request = $this->get('request');
             $categories = $request->request->get('playlists');
-            if(!empty($categories))
+            if(!empty($categories)) {
                 $songs = $em->getRepository('GmasMusicBundle:Song')->findBy(array('statut' => 1, 'category' => $categories, 'deadlink' => 0));
+            }
             else {
                 $session = $this->getRequest()->getSession();
                 $session->getFlashBag()->add('error', 'Vous devez sélectionner au moins une catégorie !');
@@ -133,10 +134,10 @@ class CategoriesController extends Controller
         $em->persist($playlist);
         $em->flush();
 
-        $session = $this->get('session');
-        $session->set('playlist', $playlist);
+        $serializer = $this->container->get('jms_serializer');
+        $playlist = $serializer->serialize($playlist, 'json');
 
-        return $this->redirect($this->generateUrl('gmas_music_listen_content', array('playlistId' => $playlist->getId(), 'songId' => $playlist->getSongs()[0]->getId())));
+        return new Response($playlist);
     }
 
     /**

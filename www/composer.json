@@ -20,7 +20,8 @@
         "jms/di-extra-bundle": "1.3.*",
         "friendsofsymfony/user-bundle": "*",
         "zend/gdata":"1.12.1",
-		"friendsofsymfony/jsrouting-bundle": "@stable"
+		"friendsofsymfony/jsrouting-bundle": "@stable",
+        "jms/serializer-bundle": "0.13.*"
     },
     "include-path": ["vendor/zend/gdata/library"],
     "scripts": {

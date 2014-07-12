@@ -19,11 +19,10 @@ class AppKernel extends Kernel
             new JMS\AopBundle\JMSAopBundle(),
             new JMS\DiExtraBundle\JMSDiExtraBundle($this),
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
-
+            new JMS\SerializerBundle\JMSSerializerBundle(),
 
             new Gmas\MusicBundle\GmasMusicBundle(),
             new Gmas\UserBundle\GmasUserBundle(),
-
 
             new FOS\UserBundle\FOSUserBundle(),
             new Gmas\PublicBundle\GmasPublicBundle(),
