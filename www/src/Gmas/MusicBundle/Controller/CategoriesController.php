@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Gmas\MusicBundle\Entity\Categories;
 use Gmas\MusicBundle\Entity\StatsCategory;
 use Gmas\MusicBundle\Entity\Playlist;
@@ -91,7 +92,7 @@ class CategoriesController extends Controller
     /**
     * Redirect user on the right playlist
     *
-    * @Route("/{categoryId}", name="categories_start", options={"expose"=true})
+    * @Route("/{categoryId}/letsgo", name="categories_start", options={"expose"=true})
     * @Method("GET")
     * @Template()
     */
@@ -123,7 +124,13 @@ class CategoriesController extends Controller
         }
 
         $playlist = new Playlist();
+
+        shuffle($songs);
+        $playlistt = new \stdClass();
+        $playlistt->songs = array();
         foreach ($songs as $song) {
+            $playlistt->token = $playlist->getToken();
+            $playlistt->songs[] = array('id' => $song->getId(), 'name' => $song->getName(), 'category.id' => $song->getCategory()->getId(), 'category.name' => $song->getCategory()->getName());
             $playlist->addSong($song);
         }
 
@@ -134,10 +141,40 @@ class CategoriesController extends Controller
         $em->persist($playlist);
         $em->flush();
 
-        $serializer = $this->container->get('jms_serializer');
-        $playlist = $serializer->serialize($playlist, 'json');
+        $response = new JsonResponse();
+        $response->setData(array(
+            'playlist' => $playlistt
+        ));
 
-        return new Response($playlist);
+        return $response;
+    }
+
+    /**
+    * Redirect user on the right playlist
+    *
+    * @Route("/list/json", name="categories_list", options={"expose"=true})
+    * @Method("GET")
+    * @Template()
+    */
+    public function listAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $categories = $em->getRepository('GmasMusicBundle:Categories')->findAll();
+
+        $categoriesArray = array();
+        foreach ($categories as $category) {
+            $categoriesArray[] = array(
+                'id' => $category->getId(),
+                'name' => $category->getName()
+            );
+        }
+
+        $response = new JsonResponse();
+        $response->setData(array(
+            'categories' => $categoriesArray
+        ));
+
+        return $response;
     }
 
     /**

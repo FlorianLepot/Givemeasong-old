@@ -1,10 +1,10 @@
-var app = angular.module('gmasApp', ['ngRoute']);
+var app = angular.module('gmasApp', ['ngRoute', 'ngAnimate']);
 
 app.config(function($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: Routing.generate('homepage_content'),
-            controller: ''
+            controller: 'CategoriesController'
         })
         .when('/letsgo/:category', {
             templateUrl: function(params){ return Routing.generate('homepage_content') },

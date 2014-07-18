@@ -5,6 +5,7 @@
         <title>Give me a Song!</title>
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+        <!-- <link rel="stylesheet" href="{{ asset('bundles/gmaspublic/css/animation.css') }}"> -->
         <link rel="icon" href="favicon.ico" />
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,11 +45,11 @@
                             <div class="col-sm-12">
                                 <div class="row">
                                     <div class="col-sm-4">
-                                        <div id="logo"><a href="{{ path('homepage') }}"><img src="{{ asset('img/logo.png') }}"></a></div>
+                                        <div id="logo"><a href="#/"><img src="{{ asset('img/logo.png') }}"></a></div>
                                     </div>
                                     <div class="col-sm-8" id="login">
                                         <ul class="nav nav-pills pull-right">
-                                            <li class="active"><a href="{{ path('homepage') }}">Accueil</a></li>
+                                            <li class="active"><a href="#/">Accueil</a></li>
                                             {% if is_granted("ROLE_ADMIN") %}
                                             <li><a href="{{ path('gmas_music_admin_homepage') }}"><i class="glyphicon glyphicon-cog"></i>  Administration</a></li>
                                             <li>
@@ -86,7 +87,7 @@
                   <div class="container">
                     <div class="col-sm-offset-2 col-sm-2">
                       <h2>Plan du site</h2>
-                      <p><a href="{{ path('homepage') }}">Accueil</a><br />
+                      <p><a href="#/">Accueil</a><br />
                       {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                           <a href="{{ path('fos_user_registration_register') }}">Inscription</a><br />
                           <a href="{{ path('fos_user_security_login') }}">Connexion</a><br />
@@ -125,8 +126,10 @@
         <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
         <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+        <script data-require="angular.js@*" data-semver="1.2.5" src="http://code.angularjs.org/1.2.5/angular.js"></script>
+        <script data-require="angular-route@*" data-semver="1.2.5" src="http://code.angularjs.org/1.2.5/angular-route.js"></script>
+        <script data-require="angular-animate@*" data-semver="1.2.5" src="http://code.angularjs.org/1.2.5/angular-animate.js"></script>
+
         <script src="{{ asset('bundles/gmasmusic/js/angularjs/app.js') }}"></script>
         <script src="{{ asset('bundles/gmasmusic/js/angularjs/factories/categories.js') }}"></script>
         <script src="{{ asset('bundles/gmasmusic/js/angularjs/controllers/categoriesController.js') }}"></script>

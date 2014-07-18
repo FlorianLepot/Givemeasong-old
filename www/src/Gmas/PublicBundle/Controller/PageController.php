@@ -35,6 +35,8 @@ class PageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
+        $playlist = $em->getRepository('GmasMusicBundle:Playlist')->find($playlistId);
+
         $session = $this->get('session');
         if ($session->get('playlist') == null || $session->get('playlist') != $playlist) {
             $playlist = $em->getRepository('GmasMusicBundle:Playlist')->find($playlistId);

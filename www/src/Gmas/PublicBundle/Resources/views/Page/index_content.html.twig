@@ -8,8 +8,6 @@
 
 <div class="container">
 
-  <a href="#/listen/ek27tmuxwf/256" class="btn btn-info">&Eacute;couter une musique</a>
-
   <div class="row">
     <div class="col-sm-12" id="messages">
       {% for key, flash in app.session.getFlashBag() %}
@@ -22,163 +20,137 @@
     </div>
   </div>
 
-  <div class="col-sm-offset-2 col-sm-4 col-xs-12">
+  <div class="col-sm-offset-2 col-sm-4 col-xs-12" ng-click="goToCategory([[ categories[0].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/1">
-          <img src="{{ asset('img/quiroulebamboule.jpeg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Qui roule bamboule !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/quiroulebamboule.jpeg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[0].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-4 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-4 col-xs-12" ng-click="goToCategory([[ categories[1].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/2">
-          <img src="{{ asset('img/laissemoiplanergros.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Laisse moi planer gros !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/laissemoiplanergros.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[1].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;">
+  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;" ng-click="goToCategory([[ categories[2].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/5">
-          <img src="{{ asset('img/calme.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Calme</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/calme.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[2].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12" ng-click="goToCategory([[ categories[3].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/6">
-          <img src="{{ asset('img/droguedure.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Drogue dure !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/droguedure.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[3].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12" ng-click="goToCategory([[ categories[4].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/7">
-          <img src="{{ asset('img/bitchplz.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Bitch plz j'suis raffiné !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/bitchplz.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[4].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;">
+  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;" ng-click="goToCategory([[ categories[5].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/8">
-          <img src="{{ asset('img/ghetto.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Ambiance ghetto</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/ghetto.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[5].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12" ng-click="goToCategory([[ categories[6].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/9">
-          <img src="{{ asset('img/archivenere.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>J'suis archi vénère !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/archivenere.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[6].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12" ng-click="goToCategory([[ categories[7].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/10">
-          <img src="{{ asset('img/checklabasse.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Check la basse</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/checklabasse.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[7].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;">
+  <div class="col-sm-3 col-xs-12" style="margin-left: 50px;" ng-click="goToCategory([[ categories[8].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/11">
-          <img src="{{ asset('img/whatthefuck.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>What the fuck ?</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/whatthefuck.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[8].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12" ng-click="goToCategory([[ categories[9].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/13">
-          <img src="{{ asset('img/letsparty.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Let's party !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/letsparty.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[9].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-3 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-3 col-xs-12" ng-click="goToCategory([[ categories[10].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/16">
-          <img src="{{ asset('img/enviessuicidaires.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Envies suicidaires !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/enviessuicidaires.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[10].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-1 col-sm-4 col-xs-12">
+  <div class="col-sm-offset-1 col-sm-4 col-xs-12" ng-click="goToCategory([[ categories[10].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/19">
-          <img src="{{ asset('img/sexdrugsandrocknroll.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Sex, drugs &amp; Rock 'n' Roll !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/sexdrugsandrocknroll.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[11].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-2 col-sm-4 col-xs-12">
+  <div class="col-sm-offset-2 col-sm-4 col-xs-12" ng-click="goToCategory([[ categories[12].id ]]);">
     <div class="playlist">
       <div class="content">
-        <a href="#/letsgo/20">
-          <img src="{{ asset('img/fuckingepic.jpg') }}" alt="" width="310" height="70" />
-          <div class="description">
-            <h2>Fucking Epic !</h2>
-          </div>
-        </a>
+        <img src="{{ asset('img/fuckingepic.jpg') }}" alt="" width="310" height="70" />
+        <div class="description">
+          <h2>[[ categories[12].name ]]</h2>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-sm-offset-4 col-sm-6 col-xs-12">
+  <div class="col-sm-offset-4 col-sm-6 col-xs-12" ng-click="goToCategory(0);">
     <div class="playlist">
       <div class="content">
         <div class="popover-markup">
