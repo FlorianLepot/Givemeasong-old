@@ -1,0 +1,35 @@
+{% block extends %}
+{{ "{% extends \"FLStuffManagerBundle::layout.html.twig\" %}" }}
+{{ "{% form_theme form '::form_template.html.twig' %}" }}
+{% endblock extends %}
+
+{{ "{% block menu__TODO__ %}class=\"active\"{% endblock %} "}}
+{{ "{% block menu__TODO__TODO__ %}class=\"active\"{% endblock %} "}}
+
+{% block body %}
+{{ "{% block body %}" }}
+<ul class="breadcrumb">
+  <li><a href="{{ "{{ path('homepage') }}" }}"><i class="fa fa-home"></i> Accueil</a></li>
+  <li><a href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}">{{ entity }}</a></li>
+  <li class="active">Création d'un {{ entity }}</li>
+</ul>
+
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        Créer un {{ entity }}
+        <span class="tools pull-right">
+          <a href="javascript:;" class="fa fa-chevron-down"></a>
+        </span>
+      </header>
+      <div class="panel-body">
+        {{ "{{ form(form, { 'attr': { 'class': 'form-horizontal' } }) }}" }}
+      </div>
+    </section>
+  </div>
+</div>
+
+{% set hide_edit, hide_delete = true, true %}
+{{ "{% endblock %}" }}
+{% endblock body %}

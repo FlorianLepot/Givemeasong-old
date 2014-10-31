@@ -1,0 +1,57 @@
+{% block extends %}
+{{ "{% extends \"FLStuffManagerBundle::layout.html.twig\" %}" }}
+{% endblock extends %}
+
+{{ "{% block menu__TODO__ %}class=\"active\"{% endblock %} "}}
+{{ "{% block menu__TODO__TODO__ %}class=\"active\"{% endblock %} "}}
+
+{% block body %}
+{{ "{% block body %}" }}
+<ul class="breadcrumb">
+  <li><a href="{{ "{{ path('homepage') }}" }}"><i class="fa fa-home"></i> Accueil</a></li>
+  <li><a href="{{ "{{ path('" ~ route_name_prefix ~ "') }}" }}">{{ entity }}</a></li>
+  <li class="active">{{ entity }}</li>
+</ul>
+
+<div class="row">
+  <div class="col-sm-12">
+    <section class="panel">
+      <header class="panel-heading">
+        {{ entity }}
+        <span class="tools pull-right">
+          <a href="javascript:;" class="fa fa-chevron-down"></a>
+        </span>
+      </header>
+      <div class="panel-body">
+        <table class="table table-hover general-table">
+          <tbody>
+
+          {%- for field, metadata in fields %}
+
+            <tr>
+              <th>{{ field|capitalize }}</th>
+
+            {%- if metadata.type in ['date', 'datetime'] %}
+
+              <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'d/m/Y\') }}' }}</td>
+
+            {%- else %}
+
+              <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+
+            {%- endif %}
+
+            </tr>
+
+          {%- endfor %}
+
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+{% set hide_edit, hide_delete = false, false %}
+{{ "{% endblock %}" }}
+{% endblock body %}

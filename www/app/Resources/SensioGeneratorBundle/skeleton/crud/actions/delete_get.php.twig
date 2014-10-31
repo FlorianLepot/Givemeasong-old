@@ -1,0 +1,35 @@
+    /**
+{% block phpdoc_method_header %}
+     * Deletes a {{ entity }} entity by GET method.
+{% endblock phpdoc_method_header %}
+     *
+{% block phpdoc_method_annotations %}
+{% if 'annotation' == format %}
+     * @Route("/{id}/delete", name="{{ route_name_prefix }}_delete_get")
+     * @Method("GET")
+{% endif %}
+{% endblock phpdoc_method_annotations %}
+     */
+{% block method_definition %}
+    public function deleteGetAction(Request $request, $id)
+{% endblock method_definition %}
+    {
+{% block method_body %}
+        $em = $this->getDoctrine()->getManager();
+        $entity = $em->getRepository('{{ bundle }}:{{ entity }}')->find($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find {{ entity }} entity.');
+        }
+
+        $em->remove($entity);
+        $em->flush();
+{% endblock method_body %}
+
+{% block method_return %}
+        return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
+{% endblock method_return %}
+    }
+
+{% block form %}
+{% endblock form %}
