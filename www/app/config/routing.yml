@@ -1,0 +1,15 @@
+gmas_user:
+    resource: "@GmasUserBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+gmas_music:
+    resource: "@GmasMusicBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
